@@ -21,8 +21,11 @@ public ActionTo execute(HttpServletRequest req, HttpServletResponse resp) throws
 		memberList.add(member[i]);
 	}
 	ChatDAO cdao = new ChatDAO();
+	if(cdao.makeChatRoom(chatroomname)) {
 	int chatroomnum = cdao.getchatroomlastnum(chatroomname);
 	ChatServer.getChatmembers().put(chatroomnum, memberList);
-	return null;
+	return null;}else {
+		return null;
+	}
 }
 }
