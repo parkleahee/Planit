@@ -7,6 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<a href="${cp}/schedule/writeview.sc.tc">작성하기</a>
+	<a href="${cp}/schedule/writeview.tc">작성하기</a>
+	<a href="${cp}/chat/makeChatRoom.tc">채팅방만들기</a>
 </body>
 </html>

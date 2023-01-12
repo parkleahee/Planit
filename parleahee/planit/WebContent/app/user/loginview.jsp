@@ -280,7 +280,7 @@ h6 span{
                   <div class="center-wrap">
                     <div class="section text-center">
                       <p class="login_title">Log In</p>
-	                     <form action="${cp}/user/loginok.us.tc" name="loginForm" method="post">
+	                     <form action="${cp}/user/loginok.tc" name="loginForm" method="post">
 	                      <div class="form-group">
 	                        <input type="text" name="userid" class="form-style" placeholder="Your ID" >
 	                        <i class="input-icon uil uil-at"></i>
@@ -292,7 +292,7 @@ h6 span{
 	                      <!-- <a href="#" class="btn mt-4">submit</a> -->
 	                      <div class="login_btn_box">
 	                      	<input type="submit" value="Login" class="btn">
-	                      	<input type="button" value="Join" class="btn" onclick="javascript : location.href='${cp}/user/joinuser.us.tc'">
+	                      	<input type="button" value="Join" class="btn" onclick="javascript : location.href='${cp}/user/joinuser.tc'">
 	                      </div>
 	                     </form>
                                     <p class="login_forgot"><a href="#0" class="link">Forgot your password?</a></p>

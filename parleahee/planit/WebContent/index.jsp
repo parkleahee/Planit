@@ -42,9 +42,9 @@
     <div id = "index_ment"></div>
 	<div id = "index_logo"></div>
 	<div id="index_btn">
-			<div id="index_login"><a href="${cp}/user/loginuser.us.tc">로그인</a></div>
+			<div id="index_login"><a href="${cp}/user/loginuser.tc">로그인</a></div>
 			<br>
-			<div id="index_join"><a href="${cp}/user/joinuser.us.tc">회원가입</a></div>
+			<div id="index_join"><a href="${cp}/user/joinuser.tc">회원가입</a></div>
 	</div>
     </div>
   </body>

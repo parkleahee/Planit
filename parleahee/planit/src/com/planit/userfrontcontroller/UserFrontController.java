@@ -15,24 +15,24 @@ public class UserFrontController implements FrontController{
 		ExceptionPrint ep = new ExceptionPrint();
 		System.out.println("userfront" +command);
 		switch (command) {
-		case "/user/loginuser.us":
+		case "/user/loginuser":
 			transfer = new ActionTo();
 			transfer.setRedirect(false);
 			transfer.setPath("/app/user/loginview.jsp");
 			break;
-		case "/user/joinuser.us" :
+		case "/user/joinuser" :
 			transfer = new ActionTo();
 			transfer.setRedirect(false);
 			transfer.setPath("/app/user/joinview.jsp");
 			break;
-		case "/user/loginok.us" : 
+		case "/user/loginok" : 
 			try {
 				transfer = new UserLoginOkAction().execute(req,resp);
 			} catch (Exception e) {
 				ep.exceptionPrint(e, command);
 			}
 			break;
-		case "/user/checkidok.us" :
+		case "/user/checkidok" :
 			try {
 				new CheckIdOkAction().execute(req, resp);
 			} catch (Exception e) {
@@ -40,7 +40,7 @@ public class UserFrontController implements FrontController{
 				ep.exceptionPrint(e, command);
 			}
 			break;
-		case "/user/joinok.us" :
+		case "/user/joinok" :
 			try {
 				transfer = new UserJoinOkAction().execute(req, resp);
 			} catch (Exception e) {

@@ -160,7 +160,7 @@
   </div>
    <div id="wrap">
   		<p> 회원가입 </p>
-        <form name="joinForm" method="post" action="${cp }/user/joinok.us.tc" onsubmit="return sendit()">
+        <form name="joinForm" method="post" action="${cp }/user/joinok.tc" onsubmit="return sendit()">
             <table>
                 <tr>
                     <th><label for="userid">아이디</label></th>

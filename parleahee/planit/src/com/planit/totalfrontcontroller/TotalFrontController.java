@@ -27,15 +27,16 @@ public class TotalFrontController extends HttpServlet{
 		String uri = req.getRequestURI();
 		String path = req.getContextPath();
 		String command = uri.substring(path.length());
-		String subject = command.split("\\.")[1];
-		command = command.split("\\.")[0]+"."+command.split("\\.")[1];
+		//String subject = command.split("\\.")[1];
+		String subject = command.split("/")[1];
+		command = command.split("\\.")[0];
 		ActionTo transfer = null;
 		System.out.println(command);
 		switch (subject) {
-		case "us":
+		case "user":
 				transfer = new UserFrontController().flow(req, resp, command);
 			break;
-		case "sc":
+		case "schedule":
 				transfer = new ScheduleFrontController().flow(req, resp, command);
 			break;
 		case "chat":
