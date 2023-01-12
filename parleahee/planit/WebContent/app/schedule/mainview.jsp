@@ -92,7 +92,7 @@
 				/* var title = prompt('이거 맞음:');
 				if (title) { */
 					var dt_start = moment(start).format('YYYY MM DD');
-					location.href="${cp}/schedule/writesetview.sc.tc?start="+dt_start;
+					location.href="${cp}/schedule/writesetview.tc?start="+dt_start;
 					/* /* calendar.fullCalendar('renderEvent',
 						{
 							title: title,
