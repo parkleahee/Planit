@@ -3,6 +3,7 @@ package com.planit.chatfrontcontroller;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.stream.Collectors;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -28,7 +29,7 @@ public ActionTo execute(HttpServletRequest req, HttpServletResponse resp) throws
 	ChatDAO cdao = new ChatDAO();
 	if (cdao.makeChatRoom(chatRoomName,memberList)) {
 		int chatroomnum = cdao.getchatroomlastnum();
-		String path = new Location().fowardPath(req, "/app/chat/chatting.jsp?chatroomnum="+chatroomnum);
+		String path = new Location().redicPath(req, "/chat/chatroomentranceok.tc?chatroomnum="+chatroomnum);
 		transfer.setPath(path);
 		return transfer;
 	}else {

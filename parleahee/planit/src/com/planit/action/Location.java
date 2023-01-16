@@ -18,7 +18,7 @@ public class Location {
 	      }
 	      return path;
 	   }
-	public String fowardPath(HttpServletRequest req, String pagepath) {
+	public String redicPath(HttpServletRequest req, String pagepath) {
 	      String path = req.getContextPath()+pagepath;
 	      return path;
 	   }

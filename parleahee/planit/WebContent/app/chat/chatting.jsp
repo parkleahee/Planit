@@ -6,6 +6,7 @@
 <meta charset="UTF-8">
 <title>채팅</title>
 	<script>
+		history.replaceState({},null, location.pathname);
 		const webSocket=new WebSocket("ws://localhost:9090/planit/ChatingServer"); 	
 		function chksok() {
 			console.log(webSocket);
@@ -18,7 +19,7 @@
 			chatWindow = document.getElementById("chatWindow");
 			chatMessage = document.getElementById("chatMessage");
 			chatId = "${loginUser.userid}";
-			chatroomnum =${param.chatroomnum};
+			chatroomnum =${chatroomnum};
 		}
 
 		// 메시지 전송과 대화 종료가 되지 않는 상태임
@@ -51,7 +52,7 @@
 		// 웹소켓 서버에 연결됐을 때 실행
  			webSocket.onopen = function(event) {
 			/* chatWindow.innerHTML += "웹소켓 서버에 연결되었습니다.<br/>"; */
- 			webSocket.send("${param.chatroomnum}:${loginUser.userid}");
+ 			webSocket.send("${chatroomnum}:${loginUser.userid}");
 		}; 
 		
 		//웹소켓이 닫혔을 때(서버와의 연결이 끊겼을 때 실행) 실행

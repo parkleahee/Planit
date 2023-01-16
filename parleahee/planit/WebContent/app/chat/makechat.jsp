@@ -12,9 +12,10 @@
 		<input type="text" name="chatMember">
 		<input type="submit" value = "만들기">
 	</form>
-		<form action="${cp}/chat/makeChatRoomOk.tc" method="post" name="makechat">
-		<input type="text" name="chatRoomNum">
+		<form action="${cp}/chat/chatroomentranceok.tc" method="post" name="makechat">
+		<input type="text" name="chatroomnum">
 		<input type="submit" value = "채팅방 참가하기">
 	</form>
+	<a href="${cp}/chat/chatroomentranceok.tc?chatroomnum=10">10번 채팅방 참</a>
 </body>
 </html>

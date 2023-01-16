@@ -62,7 +62,7 @@
   	#wrap>p:first-child{
   	text-align: center;
   	font-size: 30px;
-  	margin-top: 20px;
+  	margin-top: 30px;
   	}
    
    td > input[type=text]+input[type=button]{

@@ -21,19 +21,19 @@ public class ChatFrontController implements FrontController{
 		ActionTo transfer = null;
 		ExceptionPrint ep = new ExceptionPrint();
 		switch (command) {
-		case "/chat/makeChatRoomOk.chat":
+		case "/chat/makeChatRoomOk":
 			try {
 				transfer = new MakeNewChatRoomAction().execute(req, resp);
 			} catch (Exception e) {
 				ep.exceptionPrint(e, command);
 			}
 			break;
-		case "/chat/makeChatRoom.chat":
+		case "/chat/makeChatRoom":
 			transfer = new ActionTo();
 			transfer.setRedirect(false);
 			transfer.setPath("/app/chat/makechat.jsp");
 			break;
-		case "/chat/ChatroomEntranceOk.chat" :
+		case "/chat/chatroomentranceok" :
 			try {
 				transfer = new ChatroomEntranceOkAction().execute(req, resp);
 			} catch (Exception e) {

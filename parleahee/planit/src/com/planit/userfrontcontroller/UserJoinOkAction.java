@@ -30,7 +30,7 @@ public class UserJoinOkAction implements Action{
 		    System.out.println(udto);
 			transfer.setRedirect(true);
 			if(udao.userJoin(udto)) {
-				transfer.setPath(new Location().fowardPath(req, "/user/loginuser.us.tc"));		
+				transfer.setPath(new Location().redicPath(req, "/user/loginuser.us.tc"));		
 			}else {				
 				transfer.setPath(req.getContextPath());
 			}
