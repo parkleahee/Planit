@@ -1,0 +1,41 @@
+#main_nav{
+    width: 256px;
+    box-sizing : border-box;
+    float: left;
+    /*background: url(./왼쪽\ 메뉴바\ 배경.png);*/
+    /* border: 1px solid red; */
+    height: 1000px;
+    }
+    .m_detail{
+        width: 85%;
+        height: 50px;
+        font-size: 20px;
+        margin: 35px auto;
+        text-align: center;
+        line-height: 50px;
+        background-color: rgba(255, 255, 255, 0.5);
+        border-radius: 20px;
+    }
+    .m_userinfo{
+        width: 85%;
+        height: 150px;
+        font-size: 20px;
+        margin: 20px auto;
+        text-align: center;
+        color: aliceblue;
+    }
+    .userinfo_img{
+        width: 50%;
+    }
+    .m_goal{
+        height: 256px;
+        /*background: url(./목표\ 달성도판\ 이미지.png) no-repeat center;*/
+        background-size: 100%;
+    }
+    .goaldetail{
+        width: 70%;
+        margin: 0 auto;
+        position: relative;
+        top: 20%;
+        /* border: 1px solid red; */
+    }
