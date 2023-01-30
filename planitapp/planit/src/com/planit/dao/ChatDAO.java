@@ -46,4 +46,9 @@ public class ChatDAO {
 		return false;
 	}
 
+	public boolean makeChatRoom(String chatroomname) {
+		
+		return false;
+	}
+
 }
