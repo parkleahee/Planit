@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Goal">
+	<insert id="addGoal" parameterType="goaldto">
+		insert into setgoal(userid,goal) values(#{userid},#{goal}) 
+	</insert>
+	<insert id="addTodo" parameterType="tododto">
+		insert into todolist(userid,todocontents) values(#{userid},#{todocontents})
+	</insert>
+	<insert id="getGoal" parameterType="goaldto">
+		insert into getgoal(goalnum) values(#{goalnum})
+	</insert>
+	
+	<select id="getGoalnum" parameterType="hashmap" resultType="_int">
+  		select goalnum from setgoal where userid = #{userid} and goal = #{goal}
+	</select>
+	
+	<select id="goalDetail" parameterType="string" resultType="goaldto">
+		select * from setgoal where userid=#{userid}
+	</select>
+	
+	<select id="getGoalList" parameterType="string" resultType="goaldto">
+		select * from setgoal where userid=#{userid}
+	</select>
+	
+	<select id="getTodoList" parameterType="string" resultType="tododto">
+		select * from todolist where userid=#{userid}
+	</select>
+	
+	
+	<update id="updateCnt" parameterType="_int">
+		update getgoal set goalcnt = goalcnt+1,goalcheck=0 where goalnum=#{goalnum}
+	</update>
+	
+	<select id="goalCnt" parameterType="_int" resultType="_int">
+		select count(*) from getgoal where goalnum=#{goalnum} 
+	</select>
+	<update id="checkTodo" parameterType="hashmap">
+		update todolist set todocheck=true where userid=#{userid} and todonum=#{todonum} 
+	</update>
+	<update id="importTodo" parameterType="hashmap">
+		update todolist set todoimport=true where userid=#{userid} and todonum=#{todonum} 
+	</update>
+	<delete id="deleteTodo" parameterType="hashmap">
+		delete from todolist where userid=#{userid} and todonum=#{todonum}  
+	</delete>
+	<delete id="deleteGoal" parameterType="hashmap">
+		delete from setgoal where userid=#{userid} and goalnum=#{goalnum}
+	</delete>
+	<select id="getTodonum" parameterType="hashmap" resultType="_int">
+  		select todonum from setgoal where userid = #{userid} and todocontents = #{todocontents}
+	</select>
+	<delete id="deleteTime" parameterType="hashmap">
+		delete from timetable where userid=#{userid} and timetitle=#{timetitle}
+	</delete>
+</mapper>

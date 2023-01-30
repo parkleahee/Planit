@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="Contact">
+  	
+	<insert id="userContact" parameterType="contactdto">
+		insert into contact(userid,contacttitle,contactcontents) values(#{userid},#{contacttitle},#{contactcontents})
+	</insert>
+	<select id="getDetail" parameterType="_int" resultType="contactdto">
+		select * from contact where contactnum=#{contactnum}	
+	</select>
+	<select id="getLastNum" parameterType="string" resultType="_int">
+		select max(contactnum) from contact where userid=#{userid}
+	</select>
+	
+  </mapper>
