@@ -34,12 +34,17 @@ public class todolistAction implements Action {
 		transfer.setRedirect(false);
 		
 		
+		PrintWriter out = resp.getWriter();
+
 		if (gdao.addTodo(tdto)) {
-				System.out.println("추가 성공");
-				transfer.setPath("/schedule/todoview.tc");
-			} else {
-				transfer.setPath(req.getContextPath());
-			}
-			return transfer;
+			out.write("O");
+			transfer.setPath("/schedule/todoview.tc");
+		} else {
+			out.write("X");
+			transfer.setPath(req.getContextPath());
 		}
+		out.close();
+
+		return null;
+	}
 }

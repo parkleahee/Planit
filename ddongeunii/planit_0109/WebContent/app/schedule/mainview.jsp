@@ -353,49 +353,47 @@
 				</div>
 				<div id="to">
 					<h1>TO DO LIST</h1>
-					<form name="todoForm" method="post"
-						action="${cp}/schedule/todook.tc">
-						<input id="todo" name="todo"> <input type="submit"
-							id="add-button" name="add-button" value="+">
+					<form id="todoForm" name="todoForm" method="post">
+						<%-- action="${cp}/schedule/todook.tc"> --%>
+						<input type="text" id="todo" name="todo"> <input type="button"
+							id="add-button" name="add-button" value="+" onclick="addTodo()">
 					</form>
 					<div id="todo-list">
-						<c:choose> 
-						<c:when test="${todoList != null and todoList.size() < 11}">
-						<c:forEach var="i" begin="0" end="${todoList.size()-1}" step="1">
-						<%-- <c:set var="todo" value="todoList[i]"/> --%>
-							<c:if test="${todoList[i].todoimport == 1}">
-								<div>
+						<c:choose>
+							<c:when test="${todoList != null and todoList.size() < 11}">
+								<c:forEach var="i" begin="0" end="${todoList.size()-1}" step="1">
+									<%-- <c:set var="todo" value="todoList[i]"/> --%>
+									<c:if test="${todoList[i].todoimport == 1}">
+										<div>
 
-									<input <c:if test="${todoList[i].todocheck == 1}">checked</c:if>
-										type="checkbox"
-										onclick="checkTodo('${i+1}')">
-									<span class="clicked" id="todo_cont">${todoList[i].todocontents}</span>
-									<input type="hidden" id="todonum${i+1}" name="todonum"
-										value="${todoList[i].todonum}"> 
-										<input type="button"
-										id="important_btn" value="x"
-										onclick="importTodo('${i+1}')">
-									<input type="button" id="delete_btn" value="x"
-										onclick="deleteTodo('${i+1}')">
-								</div>
-							</c:if>
-							<c:if test="${todoList[i].todoimport == 0 }">
-								<div>
-									<input <c:if test="${todoList[i].todocheck == 1}">checked</c:if>
-										type="checkbox"
-										onclick="checkTodo('${i+1}')" >
-									<span id="todo_cont">${todoList[i].todocontents}</span> <input
-										type="hidden" id="todonum${i+1}" name="todonum" value="${todoList[i].todonum}">
-									<input type="button" id="important_btn" value="x"
-										onclick="importTodo('${i+1}')">
-									<input type="button" id="delete_btn" value="x"
-										onclick="deleteTodo('${i+1}')">
-									<%-- <input type="button" id="delete_btn" value="x" onclick="location.href='${cp}/schedule/tododeleteok.tc?todonum=${todo.todonum}'"> --%>
-								</div>
-							</c:if>
-						</c:forEach>
-						</c:when>
-					</c:choose> 
+											<input
+												<c:if test="${todoList[i].todocheck == 1}">checked</c:if>
+												type="checkbox" onclick="checkTodo('${i+1}')"> <span
+												class="clicked" id="todo_cont">${todoList[i].todocontents}</span>
+											<input type="hidden" id="todonum${i+1}" name="todonum"
+												value="${todoList[i].todonum}"> <input type="button"
+												id="important_btn" value="x" onclick="importTodo('${i+1}')">
+											<input type="button" id="delete_btn" value="x"
+												onclick="deleteTodo('${i+1}')">
+										</div>
+									</c:if>
+									<c:if test="${todoList[i].todoimport == 0 }">
+										<div>
+											<input
+												<c:if test="${todoList[i].todocheck == 1}">checked</c:if>
+												type="checkbox" onclick="checkTodo('${i+1}')"> <span
+												id="todo_cont">${todoList[i].todocontents}</span> <input
+												type="hidden" id="todonum${i+1}" name="todonum"
+												value="${todoList[i].todonum}"> <input type="button"
+												id="important_btn" value="x" onclick="importTodo('${i+1}')">
+											<input type="button" id="delete_btn" value="x"
+												onclick="deleteTodo('${i+1}')">
+											<%-- <input type="button" id="delete_btn" value="x" onclick="location.href='${cp}/schedule/tododeleteok.tc?todonum=${todo.todonum}'"> --%>
+										</div>
+									</c:if>
+								</c:forEach>
+							</c:when>
+						</c:choose>
 						<!-- <script>
 							const todo = document.todoForm.todo;
 							alert('10개까지 등록 가능합니다 ! 다른 일정 삭제후 등록해 주세요 !'); 
@@ -417,7 +415,7 @@
 </script>
 <script src='${cp}/js/main_nav.js' type="text/javascript"></script>
 <script>
-	/* function addTodo() {
+	function addTodo() {
 		const xhr = new XMLHttpRequest();
 		const todo = document.todoForm.todo;
 		if (todo.value == "") {
@@ -433,18 +431,8 @@
 					txt = txt.trim();
 					if (txt == "O") {
 						alert("등록 성공!");
-						const addButton = document.querySelector('#add-button')
-						const todoList = document.querySelector('#todo-list')
-						// const alert = document.querySelector('span')
-						const item = document.createElement('div')
-						item.innerHTML = '<input type="checkbox">'
-								+ '<span class="clicked">'
-								+ '${tdto.todocontents}'
-								+ '</span>'
-								+ '<input type ="hidden" name="todoNum" value="${tdto.todoNum}">'
-								+ '<input type="button" id="important_btn" value="x" onclick="importantTodo()">'
-								+ '<input type="button" id="delete_btn" value="x" onclick="deleteTodo()">'
-						todoList.appendChild(item)
+						(location || window.location || document.location).reload();
+						
 					} else {
 						alert("등록 실패!");
 						todo.value = "";
@@ -456,7 +444,38 @@
 
 		xhr.open("GET", cp + "/schedule/todook.tc?todo=" + todo.value, true);
 		xhr.send();
+	} 
+	
+	/* function addTodo(){
+		//폼 가져오기
+		var form = $('#todoForm')[0];
+		
+		// Create an FormData object 
+		var data = new FormData(form);
+		
+		$.ajax({
+			type: "POST",
+			enctype: 'multipart/form-data',
+			url: cp+'/schedule/todook.tc',	// form을 전송할 실제 파일경로
+			data: data,
+			processData: false,
+			contentType: false,
+			cache: false,
+			timeout: 600000,
+			beforeSend : function() {
+				// 전송 전 실행 코드
+			},
+			success: function (data) {
+				// 전송 후 성공 시 실행 코드
+				console.log(data);
+			},
+			error: function (e) {
+				// 전송 후 에러 발생 시 실행 코드
+				console.log("ERROR : ", e);
+			}
+		});
 	} */
+	
 	function deleteTodo(i) {
 	
 	var todonum = document.getElementById("todonum"+i); 
