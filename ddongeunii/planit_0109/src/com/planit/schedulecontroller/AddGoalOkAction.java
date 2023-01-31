@@ -57,9 +57,10 @@ public class AddGoalOkAction implements Action {
 				gdto2.setGoalnum(goalnum);
 				gdto2.setGoalcheck("t");
 				session.setAttribute("goal2", gdto2);
+				
 				System.out.println("추가 성공");
 			}
-			transfer.setPath("/app/schedule/mainview.jsp");
+			transfer.setPath("/schedule/todoview.tc");
 		}
 		else {
 			//localhost:9090/????

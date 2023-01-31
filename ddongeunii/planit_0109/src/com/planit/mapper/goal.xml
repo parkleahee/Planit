@@ -25,6 +25,10 @@
 		select * from setgoal where userid=#{userid}
 	</select>
 	
+	<select id="setGoalList" parameterType="string" resultType="goaldto">
+		select * from getgoal where goalnum=#{goalnum}
+	</select>
+	
 	<select id="getTodoList" parameterType="string" resultType="tododto">
 		select * from todolist where userid=#{userid}
 	</select>
@@ -51,6 +55,9 @@
 	</delete>
 	<select id="getTodonum" parameterType="hashmap" resultType="_int">
   		select todonum from setgoal where userid = #{userid} and todocontents = #{todocontents}
+	</select>
+	<select id="getCheckGoal" parameterType="_int" resultType="_int">
+  		select count(*) from getgoal where goalnum = #{goalnum} and goaldate = curdate()
 	</select>
 	<delete id="deleteTime" parameterType="hashmap">
 		delete from timetable where userid=#{userid} and timetitle=#{timetitle}

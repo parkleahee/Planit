@@ -18,7 +18,7 @@ public class CntGoalViewAction implements Action {
 		
 		HttpSession session = req.getSession();
 		
-		GoalDTO gdto = new GoalDTO();
+//		GoalDTO gdto = new GoalDTO();
 		GoalDAO gdao = new GoalDAO();
 		
 		ActionTo transfer = new ActionTo();
@@ -29,16 +29,23 @@ public class CntGoalViewAction implements Action {
 			System.out.println("들어옴");
 			int goalnum= Integer.parseInt(req.getParameter("goalnum"));
 			((GoalDTO)session.getAttribute("goal1")).setGoalnum(goalnum);
-		if(gdao.getGoal((GoalDTO)session.getAttribute("goal1"))) {
-			System.out.println("들어옴2");
-			int goalcnt = gdao.goalCnt(goalnum);
-			System.out.println(goalcnt);
-			GoalDTO gdto1 = (GoalDTO)session.getAttribute("goal1");	
-			gdto1.setGoalcheck("f");
-			gdto1.setGoalcnt(goalcnt);
-			session.setAttribute("goal1", gdto1);
-			transfer.setPath(req.getContextPath()+"/app/schedule/mainview.jsp");
+			//날짜 들어가있는지 확인해서 
+			System.out.println(gdao.getCheckGoal(goalnum));
+			if(gdao.getCheckGoal(goalnum)==0) {
+				if(gdao.getGoal((GoalDTO)session.getAttribute("goal1"))) {
+					System.out.println("들어옴2");
+					int goalcnt = gdao.goalCnt(goalnum);
+					System.out.println(goalcnt);
+					GoalDTO gdto1 = (GoalDTO)session.getAttribute("goal1");	
+					gdto1.setGoalcheck("f");
+					gdto1.setGoalcnt(goalcnt);
+					session.setAttribute("goal1", gdto1);
+					transfer.setPath(req.getContextPath()+"/schedule/todoview.tc");
+					}
+			}else if(gdao.getCheckGoal(goalnum)==1) {
+				transfer.setPath(req.getContextPath()+"/schedule/todoview.tc");
 			}
+		
 		}else if(goal.equals("goal2")){
 			System.out.println("2번 들어옴");
 			int goalnum= Integer.parseInt(req.getParameter("goalnum"));
@@ -51,7 +58,7 @@ public class CntGoalViewAction implements Action {
 			gdto2.setGoalcheck("f");
 			gdto2.setGoalcnt(goalcnt);
 			session.setAttribute("goal2", gdto2);
-			transfer.setPath(req.getContextPath()+"/app/schedule/mainview.jsp");
+			transfer.setPath("/schedule/todoview.tc");
 			}
 		}
 		else {

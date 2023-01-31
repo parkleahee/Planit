@@ -99,7 +99,7 @@
     	<c:forEach items="${timeList}" var="time">
           {
         	  /* id로 번호받아와서 삭제할수 있도록 수정해야 함 !!!!!! -> 달력도 */
-          	title :'${time.timetitle}',
+        	  title :'${time.timetitle}',
               start :'${time.timestart}',
               end :'${time.timeend}',
               textColor:"#000000",

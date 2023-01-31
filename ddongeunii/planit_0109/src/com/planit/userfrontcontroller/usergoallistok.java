@@ -23,8 +23,10 @@ public class usergoallistok implements Action {
 		GoalDAO gdao = new GoalDAO();
 		
 		List<GoalDTO>goalList = gdao.getGoalList(userid);
+		List<GoalDTO>sgoalList = gdao.setGoalList(userid);
 		
 		req.setAttribute("goalList", goalList);
+		req.setAttribute("sgoalList", sgoalList);
 		
 		ActionTo transfer = new ActionTo();
 		transfer.setRedirect(false);

@@ -19,6 +19,7 @@ public class UserLoginOkAction implements Action{
 	public ActionTo execute(HttpServletRequest req, HttpServletResponse resp) throws Exception {
 		ActionTo transfer = new ActionTo();
 		UserDAO udao = new UserDAO();
+		GoalDAO gdao = new GoalDAO();
 		HttpSession session = req.getSession();
 		System.out.println("loginex");
 		String userid = req.getParameter("userid");
@@ -34,10 +35,20 @@ public class UserLoginOkAction implements Action{
 		if (loginUser != null) {
 			System.out.println("로그인 성공");
 			session.setAttribute("loginUser", loginUser);
-			GoalDTO gdto1 = (GoalDTO)session.getAttribute("goal1");
-			GoalDTO gdto2 = (GoalDTO)session.getAttribute("goal2");
-			session.setAttribute("goal1", gdto1);
-			session.setAttribute("goal2", gdto2);
+//			gdao.goalNow(userid).forEach((value)->{
+//				int goalnum = value.getGoalnum();
+//				if(gdao.getCheckGoal(goalnum)) {
+//				value.setGoalcheck("f");
+//				}else {
+//					value.setGoalcheck("t");
+//				}
+//				if (session.getAttribute("goal1")==null) {
+//					session.setAttribute("goal1", value);					
+//				}else {
+//					session.setAttribute("goal2", value);					
+//				}
+//			}
+//					);
 			transfer.setPath("/schedule/todoview.tc");
 		}else {
 			transfer.setPath("/app/user/loginview.jsp");

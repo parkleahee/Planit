@@ -301,17 +301,21 @@
 								<span>${goal1.goal}</span> <span>${goal1.goalnum}</span>
 							</div>
 							<div>
+								
 								<progress id="progress1" value="${100/30*goal1.goalcnt}"
 									max="100"></progress>
+								<span id="goalchk_1"></span>
 							</div>
 							<c:choose>
 								<c:when test="${goal1.goalcheck == 't'}">
 									<input type="button" name="getgoal_btn1" id="getgoal_btn1"
-										value="오늘 목표 달성"
-										onclick="location.href='${cp}/schedule/cntgoalview.tc?goal=goal1&goalnum=${goal1.goalnum}'">
+										value="오늘 목표 달성" onclick="location.href='${cp}/schedule/cntgoalview.tc?goal=goal1&goalnum=${goal1.goalnum}'">
 								</c:when>
 								<c:when test="${goal1.goalcheck == 'f'}">
+								<script>
 										document.getElementById("getgoal_btn1").style.display = 'none';
+										document.getElementById("goalchk_1").innerHTML='오늘의 목표 달성 !';
+								</script>
 									</c:when>
 							</c:choose>
 						</div>
@@ -326,11 +330,20 @@
 								<span>${goal2.goal}</span> <span>${goal2.goalnum}</span>
 							</div>
 							<div>
-								<progress id="progress2" value="0" max="100"></progress>
+								<progress id="progress2" value="${100/30*goal2.goalcnt}" max="100"></progress>
 							</div>
-							<input type="button" name="getgoal_btn2" id="getgoal_btn2"
-								value="오늘 목표 달성"
-								onclick="location.href='${cp}/user/cntgoalview.tc?goal=goal2&goalnum=${goal2.goalnum}'">
+							<c:choose>
+								<c:when test="${goal2.goalcheck == 't'}">
+									<input type="button" name="getgoal_btn2" id="getgoal_btn2"
+										value="오늘 목표 달성"
+										onclick="location.href='${cp}/schedule/cntgoalview.tc?goal=goal2&goalnum=${goal2.goalnum}'">
+								</c:when>
+								<c:when test="${goal2.goalcheck == 'f'}">
+								<script>
+										document.getElementById("getgoal_btn2").style.display = 'none';
+								</script>
+									</c:when>
+							</c:choose>
 						</div>
 						<script>
 							/* alert('목표 설정 성공 ! 목표 설정은 2개까지 가능합니다 !'); */
@@ -415,6 +428,7 @@
 </script>
 <script src='${cp}/js/main_nav.js' type="text/javascript"></script>
 <script>
+
 	function addTodo() {
 		const xhr = new XMLHttpRequest();
 		const todo = document.todoForm.todo;

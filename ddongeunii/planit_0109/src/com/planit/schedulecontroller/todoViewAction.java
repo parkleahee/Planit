@@ -24,9 +24,11 @@ public class todoViewAction implements Action {
 		
 		List<TodoDTO>todoList = gdao.getTodoList(userid);
 		List<GoalDTO>goalList = gdao.getGoalList(userid);
+//		List<GoalDTO>sgoalList = gdao.setGoalList(goalnum);
 		
 		req.setAttribute("todoList", todoList);
 		req.setAttribute("goalList", goalList);
+//		req.setAttribute("sgoalList", sgoalList);
 		
 		ActionTo transfer = new ActionTo();
 		transfer.setRedirect(false);

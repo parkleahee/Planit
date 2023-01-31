@@ -88,5 +88,16 @@ public class GoalDAO {
 		datas.put("timetitle", timetitle);
 		return sqlsession.delete("Goal.deleteTime",datas)==1;
 	}
-
+	public List<GoalDTO> setGoalList(String userid) {
+		return sqlsession.selectList("Goal.setGoalList",userid);
+	}
+	
+	public List<GoalDTO> goalNow(String userid) {
+		return sqlsession.selectList("Goal.goalNow",userid);
+	}
+	
+	public int getCheckGoal(int goalnum) {
+		return sqlsession.selectOne("Goal.getCheckGoal",goalnum);
+	}
+	
 }
