@@ -51,21 +51,21 @@ public class UserFrontController implements FrontController{
 		
 		case "/user/usergoal" :
 			try {
-				transfer = new usergoallistok().execute(req,resp);
+				transfer = new UserGoalListOk().execute(req,resp);
 			} catch (Exception e) {
 				ep.exceptionPrint(e, command);
 			}
 			break;
 		case "/user/goallist" :
 			try {
-				transfer = new usergoallistok().execute(req,resp);
+				transfer = new UserGoalListOk().execute(req,resp);
 			} catch (Exception e) {
 				ep.exceptionPrint(e, command);
 			}
 			break;
 		case "/user/deletegoal" :
 			try {
-				transfer = new userGoalDeleteOkAction().execute(req,resp);
+				transfer = new UserGoalDeleteOkAction().execute(req,resp);
 			} catch (Exception e) {
 				ep.exceptionPrint(e, command);
 			}

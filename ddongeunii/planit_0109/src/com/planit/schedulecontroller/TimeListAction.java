@@ -12,7 +12,7 @@ import com.planit.dao.TimeDAO;
 import com.planit.dto.TimeDTO;
 import com.planit.dto.UserDTO;
 
-public class timetlistAction implements Action {
+public class TimeListAction implements Action {
 	@Override
 	public ActionTo execute(HttpServletRequest req, HttpServletResponse resp) throws Exception {
 		

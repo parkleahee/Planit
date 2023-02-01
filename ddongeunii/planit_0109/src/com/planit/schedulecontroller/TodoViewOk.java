@@ -13,7 +13,7 @@ import com.planit.dto.GoalDTO;
 import com.planit.dto.TodoDTO;
 import com.planit.dto.UserDTO;
 
-public class todoViewAction implements Action {
+public class TodoViewOk implements Action {
 	@Override
 	public ActionTo execute(HttpServletRequest req, HttpServletResponse resp) throws Exception {
 		

@@ -10,7 +10,7 @@ import com.planit.dao.TimeDAO;
 import com.planit.dto.TimeDTO;
 import com.planit.dto.UserDTO;
 
-public class timetTestAction implements Action {
+public class TimeTestAction implements Action {
 	@Override
 	public ActionTo execute(HttpServletRequest req, HttpServletResponse resp) throws Exception {
 		TimeDTO tdto = new TimeDTO();

@@ -1,6 +1,4 @@
-package com.planit.schedulecontroller;
-
-import java.io.PrintWriter;
+package com.planit.userfrontcontroller;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -11,10 +9,10 @@ import com.planit.action.ActionTo;
 import com.planit.dao.GoalDAO;
 import com.planit.dto.UserDTO;
 
-public class todoImportAction implements Action {
+public class UserGoalDeleteOkAction implements Action {
 	@Override
 	public ActionTo execute(HttpServletRequest req, HttpServletResponse resp) throws Exception {
-		int todonum = Integer.parseInt(req.getParameter("todonum"));
+		int goalnum = Integer.parseInt(req.getParameter("goalnum"));
 		
 		GoalDAO gdao = new GoalDAO();
 		HttpSession session = req.getSession();
@@ -24,16 +22,15 @@ public class todoImportAction implements Action {
 		
 		String userid = ((UserDTO)session.getAttribute("loginUser")).getUserid();
 		
-		PrintWriter out = resp.getWriter();
-
-		if (gdao.importTodo(userid,todonum)) {
-			out.write("O");
-		} else {
-			out.write("X");
-		}
-		out.close();
-
-		return null;
-	}
 		
+		ActionTo transfer = new ActionTo();
+		transfer.setRedirect(true);
+		if(gdao.deleteGoal(userid,goalnum)) {
+			transfer.setPath(req.getContextPath()+"/user/usergoal.tc");
+		}
+		else {
+			transfer.setPath(req.getContextPath()+"/user/usergoal.tc?goalnum="+goalnum);
+		}
+		return transfer;
+	}
 }

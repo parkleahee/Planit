@@ -11,7 +11,7 @@ import com.planit.action.ActionTo;
 import com.planit.dao.GoalDAO;
 import com.planit.dto.UserDTO;
 
-public class todoCheckAction implements Action {
+public class TodoImportOkAction implements Action {
 	@Override
 	public ActionTo execute(HttpServletRequest req, HttpServletResponse resp) throws Exception {
 		int todonum = Integer.parseInt(req.getParameter("todonum"));
@@ -24,10 +24,9 @@ public class todoCheckAction implements Action {
 		
 		String userid = ((UserDTO)session.getAttribute("loginUser")).getUserid();
 		
-		
 		PrintWriter out = resp.getWriter();
 
-		if (gdao.checkTodo(userid,todonum)) {
+		if (gdao.importTodo(userid,todonum)) {
 			out.write("O");
 		} else {
 			out.write("X");
@@ -36,4 +35,5 @@ public class todoCheckAction implements Action {
 
 		return null;
 	}
+		
 }

@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.planit.action.ActionTo;
 import com.planit.totalfrontcontroller.FrontController;
 
+
 public class ScheduleFrontController implements FrontController{
 
 	@Override
@@ -26,21 +27,21 @@ public class ScheduleFrontController implements FrontController{
 			break;
 		case "/schedule/timetest":
 			try {
-				transfer = new timetTestAction().execute(req,resp);
+				transfer = new TimeTestAction().execute(req,resp);
 			} catch (Exception e) {
 				System.out.println(e);
 			}
 			break;
 		case "/schedule/timelist":
 			try {
-				transfer = new timetlistAction().execute(req,resp);
+				transfer = new TimeListAction().execute(req,resp);
 			} catch (Exception e) {
 				System.out.println(e);
 			}
 			break;
 		case "/schedule/timedelete":
 			try {
-				transfer = new timetDeleteAction().execute(req,resp);
+				transfer = new TimeDeleteAction().execute(req,resp);
 			} catch (Exception e) {
 				System.out.println(e);
 			}
@@ -61,7 +62,7 @@ public class ScheduleFrontController implements FrontController{
 			break;
 		case "/schedule/todook":
 			try {
-				transfer = new todolistAction().execute(req,resp);
+				new TodoListOk().execute(req, resp);
 			} catch (Exception e) {
 				System.out.println(e);
 			}
@@ -69,28 +70,28 @@ public class ScheduleFrontController implements FrontController{
 			
 		case "/schedule/todoview":
 			try {
-				transfer = new todoViewAction().execute(req,resp);
+				new TodoViewOk().execute(req,resp);
 			} catch (Exception e) {
 				System.out.println(e);
 			}
 			break;
 		case "/schedule/todocheck":
 			try {
-				transfer = new todoCheckAction().execute(req,resp);
+				new TodoCheckOkAction().execute(req,resp);
 			} catch (Exception e) {
 				System.out.println(e);
 			}
 			break;
 		case "/schedule/todoimport":
 			try {
-				transfer = new todoImportAction().execute(req,resp);
+				new TodoImportOkAction().execute(req,resp);
 			} catch (Exception e) {
 				System.out.println(e);
 			}
 			break;
 		case "/schedule/tododeleteok":
 			try {
-				transfer = new todoDeleteAction().execute(req,resp);
+				new TodoDeleteOkAction().execute(req,resp);
 			} catch (Exception e) {
 				System.out.println(e);
 			}

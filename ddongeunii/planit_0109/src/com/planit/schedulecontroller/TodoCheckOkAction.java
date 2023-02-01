@@ -11,11 +11,10 @@ import com.planit.action.ActionTo;
 import com.planit.dao.GoalDAO;
 import com.planit.dto.UserDTO;
 
-public class timetDeleteAction implements Action {
+public class TodoCheckOkAction implements Action {
 	@Override
 	public ActionTo execute(HttpServletRequest req, HttpServletResponse resp) throws Exception {
-		String timetitle = req.getParameter("timetitle");
-		System.out.println(timetitle);
+		int todonum = Integer.parseInt(req.getParameter("todonum"));
 		
 		GoalDAO gdao = new GoalDAO();
 		HttpSession session = req.getSession();
@@ -25,9 +24,10 @@ public class timetDeleteAction implements Action {
 		
 		String userid = ((UserDTO)session.getAttribute("loginUser")).getUserid();
 		
+		
 		PrintWriter out = resp.getWriter();
 
-		if (gdao.deleteTime(userid,timetitle)) {
+		if (gdao.checkTodo(userid,todonum)) {
 			out.write("O");
 		} else {
 			out.write("X");
