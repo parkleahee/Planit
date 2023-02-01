@@ -301,23 +301,20 @@
 								<span>${goal1.goal}</span> <span>${goal1.goalnum}</span>
 							</div>
 							<div>
-								
 								<progress id="progress1" value="${100/30*goal1.goalcnt}"
 									max="100"></progress>
+									<br> <br>
 								<span id="goalchk_1"></span>
 							</div>
-							<c:choose>
-								<c:when test="${goal1.goalcheck == 't'}">
+							<%-- <c:choose> --%>
+								<c:if test="${goal1.goalcheck == 't'}">
 									<input type="button" name="getgoal_btn1" id="getgoal_btn1"
 										value="오늘 목표 달성" onclick="location.href='${cp}/schedule/cntgoalview.tc?goal=goal1&goalnum=${goal1.goalnum}'">
-								</c:when>
-								<c:when test="${goal1.goalcheck == 'f'}">
-								<script>
-										document.getElementById("getgoal_btn1").style.display = 'none';
-										document.getElementById("goalchk_1").innerHTML='오늘의 목표 달성 !';
-								</script>
-									</c:when>
-							</c:choose>
+								</c:if>
+								
+								<%-- <c:otherwise>
+								</c:otherwise>
+							</c:choose> --%>
 						</div>
 						<script>
 							/* alert('목표 설정 성공 ! 목표 설정은 2개까지 가능합니다 !'); */
@@ -331,19 +328,15 @@
 							</div>
 							<div>
 								<progress id="progress2" value="${100/30*goal2.goalcnt}" max="100"></progress>
+								<br> <br>
+								<span id="goalchk_2"></span>
 							</div>
-							<c:choose>
-								<c:when test="${goal2.goalcheck == 't'}">
+								<c:if test="${goal2.goalcheck == 't'}">
 									<input type="button" name="getgoal_btn2" id="getgoal_btn2"
 										value="오늘 목표 달성"
 										onclick="location.href='${cp}/schedule/cntgoalview.tc?goal=goal2&goalnum=${goal2.goalnum}'">
-								</c:when>
-								<c:when test="${goal2.goalcheck == 'f'}">
-								<script>
-										document.getElementById("getgoal_btn2").style.display = 'none';
-								</script>
-									</c:when>
-							</c:choose>
+								</c:if>
+								
 						</div>
 						<script>
 							/* alert('목표 설정 성공 ! 목표 설정은 2개까지 가능합니다 !'); */
@@ -568,7 +561,19 @@ function checkTodo(i) {
 		xhr.open("GET", cp + "/schedule/todocheck.tc?todonum="+todonum.value, true);
 		xhr.send();
 	}
+window.onload = function(){
+	let goalchk_1="${goal1.goalcheck}";
+	if(goalchk_1 == 'f'){
+		document.getElementById("goalchk_1").innerHTML='오늘의 목표 달성🙂!';
+	}
 	
-	
+	let goalchk_2="${goal2.goalcheck}";
+	if(goalchk_2 == 'f'){
+		document.getElementById("goalchk_2").innerHTML='오늘의 목표 달성🙂!';
+	}
+}
+
+
+
 </script>
 </html>

@@ -35,20 +35,24 @@ public class UserLoginOkAction implements Action{
 		if (loginUser != null) {
 			System.out.println("로그인 성공");
 			session.setAttribute("loginUser", loginUser);
-//			gdao.goalNow(userid).forEach((value)->{
-//				int goalnum = value.getGoalnum();
-//				if(gdao.getCheckGoal(goalnum)) {
-//				value.setGoalcheck("f");
-//				}else {
-//					value.setGoalcheck("t");
-//				}
-//				if (session.getAttribute("goal1")==null) {
-//					session.setAttribute("goal1", value);					
-//				}else {
-//					session.setAttribute("goal2", value);					
-//				}
-//			}
-//					);
+			// 가장 최근의 두개의 목표 -> 30일이 안된 목표인지 
+			//  로그인하기전에 시작일로 부터 30일이 지났는지 안지났는지 확인해야함 
+			
+			gdao.goalNow(userid).forEach((value)->{
+				int goalnum = value.getGoalnum();
+				//db에 오늘 날짜가 있는지 없는지 확인
+				if(gdao.getCheckGoal(goalnum)==1) {
+				value.setGoalcheck("f");
+				}else if(gdao.getCheckGoal(goalnum)==0) {
+					value.setGoalcheck("t");
+				}
+				if (session.getAttribute("goal1")==null) {
+					session.setAttribute("goal1", value);					
+				}else {
+					session.setAttribute("goal2", value);					
+				}
+			}
+					);
 			transfer.setPath("/schedule/todoview.tc");
 		}else {
 			transfer.setPath("/app/user/loginview.jsp");

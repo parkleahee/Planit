@@ -32,8 +32,9 @@
 	<select id="getTodoList" parameterType="string" resultType="tododto">
 		select * from todolist where userid=#{userid}
 	</select>
-	
-	
+	<select id="goalNow" parameterType="string" resultType="goaldto">
+		select * from setgoal where userid=#{userid} between date_add(now(),interval -30 day) and now() order by goalnum desc limit 2;
+	</select>
 	<update id="updateCnt" parameterType="_int">
 		update getgoal set goalcnt = goalcnt+1,goalcheck=0 where goalnum=#{goalnum}
 	</update>
