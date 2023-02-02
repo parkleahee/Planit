@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>    
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -261,67 +262,63 @@ button {
 				<div id="m_logout" class="m_detail">
 					<a id="my_logout" href="${cp}/user/userlogout.tc">로그아웃</a>
 				</div>
-				
+
 				<div class="m_goal">
-					<button id="show">목표를 설정해 주세요.</button>
-					<div class="background">
-						<div class="window">
-							<div class="popup">
-								<form id="goalForm" name="goalForm" method="post"
-									action="${cp}/user/addgoalokaction.tc"
-									onsubmit="return add_goal1()">
-									<table id="goal_tb">
-										<tbody>
-											<tr>
-												<td><h3>목표설정</h3></td>
-											</tr>
-											<tr>
-												<td><input name="usergoal1" id="usergoal1"></td>
-											</tr>
-											<tr>
-												<td>기간은 당일부터 30일 입니다 !</td>
-											</tr>
-										</tbody>
-									</table>
-									<input type="submit" value="목표 설정">
-									<input type="button" id="close"
-										onclick="location.href='${cp}/app/schedule/mainview.jsp';">돌아가기</input>
-								</form>
+					<c:if test="${goal1 != null and goal2 != null}">
+						<script>
+							document.getElementById('show').style.display = 'none';
+						</script>
+					</c:if>
+					<c:if test="${goal1 != null}">
+						<div class="goalset1">
+							<div id="goal_tit1">
+								<span>${goal1.goal}</span> <span>${goal1.goalnum}</span>
 							</div>
+							<div>
+								<progress id="progress1" value="${100/30*goal1.goalcnt}"
+									max="100"></progress>
+									<br> <br>
+								<span id="goalchk_1"></span>
+							</div>
+							<%-- <c:choose> --%>
+								<c:if test="${goal1.goalcheck == 't'}">
+									<input type="button" name="getgoal_btn1" id="getgoal_btn1"
+										value="오늘 목표 달성" onclick="location.href='${cp}/schedule/cntgoalview.tc?goal=goal1&goalnum=${goal1.goalnum}'">
+								</c:if>
+								
+								<%-- <c:otherwise>
+								</c:otherwise>
+							</c:choose> --%>
 						</div>
-					</div>
-					<c:choose>
-					<c:when test="${gdto.goal != null}">
-					<div class="goalset1">
-						<div id="goal_tit1"><span>${gdto.goal}</span></div>
-						<div>
-							<progress id="progress1" value="0" max="100"></progress>
+						<script>
+							/* alert('목표 설정 성공 ! 목표 설정은 2개까지 가능합니다 !'); */
+							document.getElementsByClassName("goalset1")[0].style.display = 'block';
+						</script>
+					</c:if>
+					<c:if test="${goal2 != null}">
+						<div class="goalset2">
+							<div id="goal_tit2">
+								<span>${goal2.goal}</span> <span>${goal2.goalnum}</span>
+							</div>
+							<div>
+								<progress id="progress2" value="${100/30*goal2.goalcnt}" max="100"></progress>
+								<br> <br>
+								<span id="goalchk_2"></span>
+							</div>
+								<c:if test="${goal2.goalcheck == 't'}">
+									<input type="button" name="getgoal_btn2" id="getgoal_btn2"
+										value="오늘 목표 달성"
+										onclick="location.href='${cp}/schedule/cntgoalview.tc?goal=goal2&goalnum=${goal2.goalnum}'">
+								</c:if>
+								
 						</div>
-						<input type="button" name="getgoal_btn1" id="getgoal_btn1"
-							value="오늘 목표 달성">
-					</div>
-					<script>
-					alert('목표 설정 성공 ! 목표 설정은 2개까지 가능합니다 !');
-					document.getElementsByClassName("goalset1")[0].style.display = 'block';
-					</script>
-					</c:when>
-					<c:otherwise>
-						<c:if test="" >
-						</c:if>
-					</c:otherwise>
-					</c:choose>
-					<div class="goalset2">
-						<div id="goal_tit2"><span></span></div>
-						<div>
-							<input id="goalday_1" type="hidden">
-							<progress id="progress2" value="0" max="100"></progress>
-						</div>
-						<input type="button" name="getgoal_btn2" id="getgoal_btn2"
-							value="오늘 목표 달성">
-					</div>
+						<script>
+							/* alert('목표 설정 성공 ! 목표 설정은 2개까지 가능합니다 !'); */
+							document.getElementsByClassName("goalset2")[0].style.display = 'block';
+						</script>
+					</c:if>
 				</div>
 			</div>
-
 		</header>
         <div id="sub">
             <div class="container">
@@ -378,6 +375,18 @@ button {
     </body>
     <script>
 	var cp = '${cp}';
+	window.onload = function(){
+		let goalchk_1="${goal1.goalcheck}";
+		if(goalchk_1 == 'f'){
+			document.getElementById("goalchk_1").innerHTML='오늘의 목표 달성🙂!';
+		}
+		
+		let goalchk_2="${goal2.goalcheck}";
+		if(goalchk_2 == 'f'){
+			document.getElementById("goalchk_2").innerHTML='오늘의 목표 달성🙂!';
+		}
+	}
+	
 </script>
 	<script src='${cp}/js/main_nav.js' type="text/javascript"></script>	
     </html>

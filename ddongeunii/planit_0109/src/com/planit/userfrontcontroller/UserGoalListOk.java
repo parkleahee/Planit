@@ -10,23 +10,22 @@ import com.planit.action.Action;
 import com.planit.action.ActionTo;
 import com.planit.dao.GoalDAO;
 import com.planit.dto.GoalDTO;
-import com.planit.dto.TodoDTO;
 import com.planit.dto.UserDTO;
 
 public class UserGoalListOk implements Action {
 	@Override
 	public ActionTo execute(HttpServletRequest req, HttpServletResponse resp) throws Exception {
 		
+		GoalDAO gdao = new GoalDAO();
+		
 		HttpSession session = req.getSession();
 		String userid = ((UserDTO)session.getAttribute("loginUser")).getUserid();
 		
-		GoalDAO gdao = new GoalDAO();
-		
 		List<GoalDTO>goalList = gdao.getGoalList(userid);
-		List<GoalDTO>sgoalList = gdao.setGoalList(userid);
+		List<GoalDTO>goalCntList = gdao.getGoalCntList(userid);
 		
 		req.setAttribute("goalList", goalList);
-		req.setAttribute("sgoalList", sgoalList);
+		req.setAttribute("goalCntList", goalCntList);
 		
 		ActionTo transfer = new ActionTo();
 		transfer.setRedirect(false);

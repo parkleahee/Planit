@@ -5,7 +5,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.planit.action.ActionTo;
 import com.planit.action.ExceptionPrint;
-import com.planit.schedulecontroller.CntGoalViewAction;
 import com.planit.totalfrontcontroller.FrontController;
 
 public class UserFrontController implements FrontController{
@@ -37,7 +36,6 @@ public class UserFrontController implements FrontController{
 			try {
 				new CheckIdOkAction().execute(req, resp);
 			} catch (Exception e) {
-				// TODO Auto-generated catch block
 				ep.exceptionPrint(e, command);
 			}
 			break;
@@ -77,7 +75,7 @@ public class UserFrontController implements FrontController{
 			break;
 		case "/user/usermyinfook":
 			try {
-				transfer = new modifyInfoOkAction().execute(req,resp);
+				transfer = new ModifyInfoOkAction().execute(req,resp);
 			} catch (Exception e) {
 				ep.exceptionPrint(e, command);
 			}

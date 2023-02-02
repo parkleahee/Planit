@@ -52,8 +52,11 @@
            /*  console.log(title); */
   					console.log(arg.start);
   					console.log(arg.end);
-  					var dt_start = moment(arg.start).format('YYYY-MM-DDTHH:mm:ss');
-  					var dt_end = moment(arg.end).format('YYYY-MM-DDTHH:mm:ss');
+  					var end_test = arg.end;
+  					end_test.setDate(end_test.getDate()-1);
+  					var dt_start = moment(arg.start).format('YYYY-MM-DD');
+  					var dt_end = moment(arg.end).format('YYYY-MM-DD');
+  					
   					location.href = "${cp}/schedule/calDate.tc?start="
 						+ dt_start+"&end="+dt_end;
   					// titleform에 각각 담아주어서 전송하기 위함 ~ 
@@ -351,7 +354,7 @@
 				<div id="cal_menu_btn">
 					<div id="cal_menu">
 						<button id="cal_btn"
-							onclick="location.href='${cp}/app/schedule/mainview.jsp'">month</button>
+							onclick="location.href='${cp}/schedule/todoview.tc'">month</button>
 						<button id="tt_btn"
 							onclick="location.href='${cp}/schedule/timelist.tc'">timetable</button>
 					</div>

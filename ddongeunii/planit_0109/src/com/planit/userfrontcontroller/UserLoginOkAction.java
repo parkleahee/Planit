@@ -40,9 +40,11 @@ public class UserLoginOkAction implements Action{
 			
 			gdao.goalNow(userid).forEach((value)->{
 				int goalnum = value.getGoalnum();
+				int goalcnt = gdao.goalCnt(goalnum);
 				//db에 오늘 날짜가 있는지 없는지 확인
 				if(gdao.getCheckGoal(goalnum)==1) {
-				value.setGoalcheck("f");
+					value.setGoalcheck("f");
+					value.setGoalcnt(goalcnt);
 				}else if(gdao.getCheckGoal(goalnum)==0) {
 					value.setGoalcheck("t");
 				}

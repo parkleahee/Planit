@@ -9,7 +9,7 @@ import com.planit.action.ActionTo;
 import com.planit.dao.UserDAO;
 import com.planit.dto.UserDTO;
 
-public class modifyInfoOkAction implements Action {
+public class ModifyInfoOkAction implements Action {
 	@Override
 	public ActionTo execute(HttpServletRequest req, HttpServletResponse resp) throws Exception {
 		UserDAO udao = new UserDAO();

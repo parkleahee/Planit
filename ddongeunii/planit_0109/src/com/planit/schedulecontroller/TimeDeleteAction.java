@@ -14,8 +14,8 @@ import com.planit.dto.UserDTO;
 public class TimeDeleteAction implements Action {
 	@Override
 	public ActionTo execute(HttpServletRequest req, HttpServletResponse resp) throws Exception {
-		String timetitle = req.getParameter("timetitle");
-		System.out.println(timetitle);
+		int timenum = Integer.parseInt(req.getParameter("timenum"));
+		System.out.println(timenum);
 		
 		GoalDAO gdao = new GoalDAO();
 		HttpSession session = req.getSession();
@@ -27,7 +27,7 @@ public class TimeDeleteAction implements Action {
 		
 		PrintWriter out = resp.getWriter();
 
-		if (gdao.deleteTime(userid,timetitle)) {
+		if (gdao.deleteTime(userid,timenum)) {
 			out.write("O");
 		} else {
 			out.write("X");

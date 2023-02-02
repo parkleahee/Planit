@@ -58,7 +58,7 @@ public class CntGoalViewAction implements Action {
 			gdto2.setGoalcheck("f");
 			gdto2.setGoalcnt(goalcnt);
 			session.setAttribute("goal2", gdto2);
-			transfer.setPath("/schedule/todoview.tc");
+			transfer.setPath(req.getContextPath()+"/schedule/todoview.tc");
 			}
 		}
 		else {

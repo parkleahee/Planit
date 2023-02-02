@@ -82,10 +82,10 @@ public class GoalDAO {
 		datas.put("todonum", todonum);
 		return sqlsession.update("Goal.checkTodo",datas)==1;
 	}
-	public boolean deleteTime(String userid, String timetitle) {
+	public boolean deleteTime(String userid, int timenum) {
 		HashMap<String, Object> datas = new HashMap<String, Object>();
 		datas.put("userid", userid);
-		datas.put("timetitle", timetitle);
+		datas.put("timenum", timenum);
 		return sqlsession.delete("Goal.deleteTime",datas)==1;
 	}
 	public List<GoalDTO> setGoalList(String userid) {
@@ -98,6 +98,9 @@ public class GoalDAO {
 	
 	public int getCheckGoal(int goalnum) {
 		return sqlsession.selectOne("Goal.getCheckGoal",goalnum);
+	}
+	public List<GoalDTO> getGoalCntList(String userid) {
+		return sqlsession.selectList("Goal.goalCntList",userid);
 	}
 	
 }

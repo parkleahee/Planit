@@ -11,7 +11,7 @@ public class ScheduleFrontController implements FrontController{
 
 	@Override
 	public ActionTo flow(HttpServletRequest req, HttpServletResponse resp, String command) {
-		ActionTo transfer = null;
+		ActionTo transfer = new ActionTo();
 		switch (command) {
 		case "/schedule/mainview":
 			transfer = new ActionTo();
@@ -41,7 +41,7 @@ public class ScheduleFrontController implements FrontController{
 			break;
 		case "/schedule/timedelete":
 			try {
-				transfer = new TimeDeleteAction().execute(req,resp);
+				new TimeDeleteAction().execute(req,resp);
 			} catch (Exception e) {
 				System.out.println(e);
 			}
@@ -70,7 +70,7 @@ public class ScheduleFrontController implements FrontController{
 			
 		case "/schedule/todoview":
 			try {
-				new TodoViewOk().execute(req,resp);
+				transfer = new TodoViewOk().execute(req,resp);
 			} catch (Exception e) {
 				System.out.println(e);
 			}
@@ -110,6 +110,7 @@ public class ScheduleFrontController implements FrontController{
 		default:
 			break;
 		}
+		System.out.println(transfer.getPath());
 		return transfer;
 	}
 	
