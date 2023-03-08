@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.planit.mapper.ScheduleMapper">
+      <select id="getScheduleList" parameterType="hashmap"
+      resultType="com.planit.domain.ScheduleDTO">
+      select s.* from t_schedule s join t_scheduledate sd on s.scnum = sd.scnum
+      where scdate like #{scdate} and userid = #{userid};
+   </select>
+   <select id="gettogetherList" parameterType="string"
+      resultType="com.planit.domain.ScheduleDTO">
+      <!-- select t_schedule.userid as userid, t_schedule.scheduletitle as scheduletitle, 
+         ssc.scnum as scnum from t_schedule join (select * from t_share where userid 
+         = #{userid}) as ssc on t_schedule.scnum = ssc.scnum; -->
+      select t_schedule.userid as userid, t_schedule.scheduletitle as
+      scheduletitle, ssc.scnum as scnum
+      from t_schedule join (select * from t_share where friends = #{userid}) as
+      ssc on t_schedule.scnum = ssc.scnum;
+   </select>
+      <insert id="insertCulture" parameterType="com.planit.domain.CultureDTO">
+       insert into t_culture 
+       values(#{cultitle}, #{cultype}, #{culgenre}, #{culcontents}, #{culscore}, #{scnum}, #{catnum}, #{contnum})
+    </insert>
+
+   <insert id="insertMemo" parameterType="com.planit.domain.MemoDTO">
+      insert into t_Memo
+      values(#{scnum}, #{catnum}, #{contnum},#{memocontents})
+   </insert>
+      <insert id="insertFood" parameterType="com.planit.domain.FoodDTO">
+       insert into t_food 
+       values(#{foodTime}, #{foodContents},#{foodScore},#{scnum},  #{catnum}, #{contnum})
+    </insert>
+   <insert id="insertScheduleDetail" parameterType="com.planit.domain.ScheduleDTO">
+      insert into t_schedule(scheduletitle, schedulecolor, userid)
+      values(#{scheduletitle}, #{schedulecolor}, #{userid})
+      <selectKey resultType="_int" keyProperty="scnum"
+         order="AFTER">
+         <!-- 이걸 이렇게 할지 아님 LAST_INSERT_ID()로 호출할지 고민~ -->
+         <!-- select scnum from t_schedule where scheduletitle=#{scheduletitle} 
+            and schedulecolor=#{schedulecolor} and userid=#{userid} -->
+         SELECT LAST_INSERT_ID()
+      </selectKey>
+   </insert>
+
+   <insert id="insertScheduleDate"
+      parameterType="com.planit.domain.ScheduleDateDTO">
+      insert into t_scheduledate(scnum,scdate) values(#{scnum},#{scdate})
+   </insert>
+   <!-- <insert id="insertDate" parameterType="scheduledatedto"> insert into 
+      t_scheduledate(scdate) values(#{scdate}) </insert> -->
+
+   <insert id="insertDiary" parameterType="com.planit.domain.DiaryDTO">
+      insert into t_diary
+      values(#{diarydate},#{weather},#{diarytitle},#{diarycontents},#{scnum},#{catnum},#{contnum})
+   </insert>
+
+   <insert id="insertAccountRow"
+      parameterType="com.planit.domain.AccountRowDTO">
+      insert into t_accountRow
+      values(#{accountRowNum},#{accdate},#{history},#{amount},#{acctype},#{scnum},#{catnum},#{contnum})
+   </insert>
+   <insert id="insertAccount"
+      parameterType="com.planit.domain.AccountDTO">
+      insert into t_account
+      values(#{startdate},#{enddate},#{budget},#{accmemo},#{accountRowNums},#{scnum},#{catnum},#{contnum})
+   </insert>
+   <!-- <select id="countMap" parameterType="" resultType=""> </select> -->
+   <insert id="insertMap" parameterType="com.planit.domain.MapDTO">
+      insert into t_map
+      values(#{latitude},#{longitude},#{scnum},#{catnum},#{contnum})
+   </insert>
+   <select id="getScBarList" parameterType="string"
+      resultType="com.planit.domain.SetScBarDTO">
+      select sd.scnum, sd.startdate,sd.enddate,ts.scheduletitle as
+      title,ts.schedulecolor as color from
+      (select sed.scnum, sed.startdate, sed.enddate from (select scnum,max(scdate)
+      as enddate,min(scdate) as startdate from t_scheduledate group by
+      scnum) as sed
+      join (select scnum from t_schedule where userid=#{userid}) as sct on
+      sed.scnum=sct.scnum) as sd
+      join t_schedule as ts on sd.scnum=ts.scnum
+   </select>
+
+   <select id="getScBar" parameterType="_int"
+      resultType="com.planit.domain.SetScBarDTO">
+      select tsd.scnum, ts.scheduletitle as title, ts.schedulecolor as color,
+      min(tsd.scdate) as startdate, max(tsd.scdate) as enddate
+      from t_scheduledate as tsd
+      join t_schedule as ts
+      on ts.scnum=tsd.scnum
+      where ts.scnum=#{scnum}
+   </select>
+   <!-- 스케줄 작성자 -->
+   <select id="getScId" parameterType="_int" resultType="string">
+   		select userid from t_schedule where scnum = #{scnum}
+   </select>
+   <insert id="insertAuthority"
+      parameterType="com.planit.domain.GroupDTO">
+      insert into t_share(scnum, userid, authority, friends) values(#{scnum},
+      #{userid}, #{authority}, #{friends})
+   </insert>
+
+   <select id="getMap" parameterType="_int"
+      resultType="com.planit.domain.MapDTO">
+      select * from t_map where scnum=#{scnum}
+   </select>
+   <select id="getMemo" parameterType="_int"
+      resultType="com.planit.domain.MemoDTO">
+      select * from t_memo where scnum=#{scnum}
+   </select>
+   <select id="getDiary" parameterType="_int"
+      resultType="com.planit.domain.DiaryDTO">
+      select * from t_diary where scnum=#{scnum}
+   </select>
+   <select id="getAccount" parameterType="_int"
+      resultType="com.planit.domain.AccountDTO">
+      select * from t_account where scnum=#{scnum}
+   </select>
+   <select id="getAccountRow" parameterType="_int"
+      resultType="com.planit.domain.AccountRowDTO">
+      select * from t_accountRow where scnum=#{scnum}
+   </select>
+   <select id="getCulture" parameterType="_int"
+      resultType="com.planit.domain.CultureDTO">
+      select * from t_culture where scnum=#{scnum}
+   </select>
+   <select id="getFood" parameterType="_int"
+      resultType="com.planit.domain.FoodDTO">
+      select * from t_food where scnum=#{scnum}
+   </select>
+
+   <!-- <update id="updateSchedule" parameterType="_int"> update t_schedule 
+      s, t_culture cul, t_diary dia, t_memo me set cul.cultitle = #[cultitle], 
+      cul.cultype = #{cultype}, cul.culgenre = #{culgenre}, cul.culcontents = #{culcontents}, 
+      cul.culscore = #{culscore}, s.scheduletitle = #{scheduletitle}, s.schedulecolor 
+      = #{schedulecolor}, where s.scnum = 2; </update> -->
+
+      <delete id="deleteSchedule" parameterType="_int">
+         delete from t_schedule where scnum = #{scnum}
+   </delete>
+
+   <delete id="deleteAcc" parameterType="_int">
+      delete acc, accr from t_account acc join t_accountrow accr on accr.scnum =
+      acc.scnum
+      where acc.scnum = #{scnum}
+   </delete>
+   <delete id="deleteFood" parameterType="_int">
+      delete from t_food f where f.scnum = #{scnum}
+   </delete>
+   <delete id="deleteCulture" parameterType="_int">
+      delete from t_culture c where c.scnum = #{scnum}
+   </delete>
+   <delete id="deleteDiary" parameterType="_int">
+      delete from t_diary d where d.scnum = #{scnum}
+   </delete>
+   <delete id="deleteMap" parameterType="_int">
+      delete from t_map m where m.scnum = #{scnum}
+   </delete>
+   <delete id="deleteMemo" parameterType="_int">
+      delete from t_memo me where me.scnum = #{scnum}
+   </delete>
+
+
+</mapper>

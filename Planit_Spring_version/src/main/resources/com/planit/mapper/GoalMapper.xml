@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.planit.mapper.GoalMapper">
+	<insert id="addGoal" parameterType="com.planit.domain.GoalDTO">
+		insert into t_setgoal(userid,goal) values(#{userid},#{goal}) 
+	</insert>
+	<insert id="addTodo" parameterType="com.planit.domain.TodoDTO">
+		insert into t_todolist(userid,todocontents) values(#{userid},#{todocontents})
+	</insert>
+	<insert id="getGoal" parameterType="com.planit.domain.GoalDTO">
+		insert into t_getgoal(goalnum) values(#{goalnum})
+	</insert>
+	
+	<select id="getGoalnum" parameterType="hashmap" resultType="_int">
+  		select goalnum from t_setgoal where userid = #{userid} and goal = #{goal}
+	</select>
+	
+	<select id="goalDetail" parameterType="string" resultType="com.planit.domain.GoalDTO">
+		select * from t_setgoal where userid=#{userid}
+	</select>
+	
+	<select id="getGoalList" parameterType="string" resultType="com.planit.domain.GoalDTO">
+		select gc.goalnum, gc.goalcnt, gs.goal, gs.term from (select goalnum,count(goaldate) as goalcnt from t_getgoal group by goalnum) as gc join (SELECT goalnum,goal,term FROM t_setgoal where userid = #{userid}) as gs on gc.goalnum = gs.goalnum order by goalnum desc;
+	</select>
+	
+	<select id="setGoalList" parameterType="string" resultType="com.planit.domain.GoalDTO">
+		select * from t_getgoal where goalnum=#{goalnum}
+	</select>
+	
+	<select id="getTodoList" parameterType="string" resultType="com.planit.domain.TodoDTO">
+		select * from t_todolist where userid=#{userid}
+	</select>
+	<select id="getMaxTodoNum" resultType="_int">
+		select max(todonum) from t_todolist where userid=#{userid}
+	</select>
+	
+	<select id="goalCntList" parameterType="string" resultType="com.planit.domain.GoalDTO">
+		select gc.goalnum, gc.goalcnt, gs.goal, gs.term from (select goalnum,count(goaldate) as goalcnt from t_getgoal group by goalnum) as gc join (SELECT goalnum,goal,term FROM t_setgoal where userid = #{userid}) as gs on gc.goalnum = gs.goalnum;
+	</select>
+	
+	<select id="goalNow" parameterType="hashmap" resultType="com.planit.domain.GoalDTO">
+		select * from t_setgoal where date_format(term,'%Y-%m-%d') between date_add(now(),interval -30 day) and now() AND userid=#{userid} order by goalnum desc limit 2
+	</select>
+	
+	<update id="updateCnt" parameterType="_int">
+		update t_getgoal set goalcnt = goalcnt+1,goalcheck=0 where goalnum=#{goalnum}
+	</update>
+	
+	<select id="goalCnt" parameterType="_int" resultType="_int">
+		select count(*) from t_getgoal where goalnum=#{goalnum} 
+	</select>
+	<update id="checkTodo" parameterType="_int">
+		update t_todolist set todocheck=true where todonum=#{todonum} 
+	</update>
+	<update id="importTodo" parameterType="_int">
+		update t_todolist set todoimport=true where todonum=#{todonum} 
+	</update>
+	<delete id="deleteTodo" parameterType="_int">
+		delete from t_todolist where todonum=#{todonum}  
+	</delete>
+	<delete id="deleteGoal" parameterType="_int">
+		delete from t_setgoal where goalnum=#{goalnum}
+	</delete>
+	<select id="getTodonum" parameterType="hashmap" resultType="_int">
+  		select todonum from t_setgoal where userid = #{userid} and todocontents = #{todocontents}
+	</select>
+	<select id="getCheckGoal" parameterType="_int" resultType="_int">
+  		select count(*) from t_getgoal where goalnum = #{goalnum} and goaldate = curdate()
+	</select>
+	<delete id="deleteTime" parameterType="hashmap">
+		delete from t_timetable where userid=#{userid} and timenum=#{timenum}
+	</delete>
+</mapper>

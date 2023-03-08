@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="com.planit.mapper.UserMapper">
+  	<select id="userLogin" parameterType="hashmap" resultType="com.planit.domain.UserDTO">
+  		select * from t_user where userid = #{userid} and userpw = #{userpw}
+  	</select>
+  	<select id="checkId" parameterType="string" resultType="_int">
+		select count(*) from t_user where userid=#{userid}
+	</select>
+	<insert id="userJoin" parameterType="com.planit.domain.UserDTO">
+		insert into t_user values (#{userid},#{userpw},#{username},
+		#{gender},#{userdob},#{userphone},#{useremail},
+		#{zipcode},#{addr},#{addrdetail},#{addretc})
+	</insert>
+	<select id="findid" parameterType="string" resultType="string">
+		select userid from t_user where userphone=#{phone}
+	</select>
+	<select id="findpw" parameterType="string" resultType="com.planit.domain.UserDTO">
+		select userpw,useremail from t_user where userid=#{userid}
+	</select>
+	<insert id="userContact" parameterType="com.planit.domain.ContactDTO">
+		insert into t_contact(userid,contacttitle,contactcontents) values(#{userid},#{contacttitle},#{contactcontents})
+	</insert>
+	
+	<update id="modifyInfo" parameterType="com.planit.domain.UserDTO">
+		update t_user set userpw=#{userpw},useremail=#{useremail},userphone=#{userphone},zipcode=#{zipcode},addr=#{addr},addrdetail=#{addrdetail},addretc=#{addretc} where userid=#{userid}
+	</update>
+	
+	<delete id="deleteInfo" parameterType="hashmap">
+		delete from t_user where userid=#{userid} and userpw=#{userpw}
+	</delete>
+	
+	<select id="getFriendCnt" resultType="_int">
+		select count(*) from t_user
+	</select>
+	<select id="getFriendCntWithKey" resultType="_int" parameterType="string">
+		select count(*) from t_user where userid like('%${keyword}%')
+		and username like ('%${keyword}%') 
+	</select>
+	<select id="getFriendList" parameterType="hashmap" resultType="com.planit.domain.UserDTO">
+      select * from t_user order by userid  
+   </select>
+   <select id="getFriendListWithKey" parameterType="hashmap" resultType="com.planit.domain.UserDTO">
+      select * from t_user where userid not in(((select userid from t_friend where friendid=#{loginUser}) union (select friendid as 'userid' from t_friend where userid=#{loginUser}) union select userid from t_user where userid=#{loginUser})) and userid = #{keyword}
+   </select>
+	
+  </mapper>

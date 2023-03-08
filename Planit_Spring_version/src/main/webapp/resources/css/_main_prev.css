@@ -1,0 +1,172 @@
+@charset "UTF-8";
+
+
+	body {
+		margin-top: 40px;
+		text-align: center;
+		font-size: 14px;
+		font-family: "Helvetica Nueue",Arial,Verdana,sans-serif;
+		/*background-color: #DDDDDD;*/
+		}
+
+	/* #wrap {
+		width: 1100px;
+		margin: 0 auto;
+		} */
+
+	#external-events {
+		float: left;
+		width: 150px;
+		padding: 0 10px;
+		text-align: left;
+		}
+
+	#external-events h4 {
+		font-size: 16px;
+		margin-top: 0;
+		padding-top: 1em;
+		}
+
+	.external-event { /* try to mimick the look of a real event */
+		margin: 10px 0;
+		padding: 2px 4px;
+		background: #3366CC;
+		color: #fff;
+		font-size: .85em;
+		cursor: pointer;
+		}
+
+	#external-events p {
+		margin: 1.5em 0;
+		font-size: 11px;
+		color: #666;
+		}
+
+	#external-events p input {
+		margin: 0;
+		vertical-align: middle;
+		}
+
+	#calendar {
+
+        /*margin: 0 auto;*/
+		width: 100%;
+		/* background-color: #FFFFFF; */
+		  border-radius: 6px;
+        /*box-shadow: 0 1px 2px #C3C3C3;*/
+		}
+
+		#container{
+      margin-bottom: 100px;
+      }
+      
+      #cal{
+      	margin-top:30px;
+        width: 60%;
+        height: 770px;
+        border: none;
+        float: left;
+		padding-left: 20px;
+
+      }
+
+      #sub_menu > a{
+        text-decoration: none;
+        color: white;
+      }
+
+      #sub_menu{
+        width: 100%;
+        background-color: black;
+        text-align: center;
+        padding: 20px 0;
+      }
+
+    header{
+        height: 800px;
+        float: left;
+    }
+    #main_info{
+        width: 100%;
+        height: 200px;
+        border: 1px solid black;
+        margin-bottom: 20px;
+       
+    }
+
+    .main_menu{
+        margin: 10px 0;
+        border: 1px solid black;
+        height: 50px;
+    }
+
+    #main_goal{
+        border: 1px solid black;
+        margin-top: 20px;
+        height: 100px;
+    }
+
+    #sub{
+        float: left;
+        width: 78%;
+        height: 800px;
+        margin-left: 10px;
+    }
+
+    #sub_menu{
+        margin: 20px 0;
+        width: 100%;
+        border: 1px solid black;
+    }
+
+    #cal_todo{
+        width: 100%;
+        height: 800px;
+    }
+
+    #calendar{
+        float: left;
+    }
+
+    #to{
+        margin-left: 10px;
+        width: 23%;
+        height: 700px;
+        /* border: 1px solid black; */
+        background-color:rgba(0, 0, 0, 0.2);
+        float:left;
+    }
+    
+    #cal_menu_btn{
+    	width: 75%;
+    }
+
+	.clicked{
+	background-color: salmon;
+}
+
+.none{
+	background-color: none;
+}
+   /* header{
+      background-image:url(../images/왼쪽\ 메뉴바\ 배경.png) ;
+      background-size: cover;
+    } */
+/* 
+    #sub{
+      background-image:url(../images/메인\ 배경.png) ;
+      background-size: cover;
+      background-position:bottom;
+    } */
+    
+    #save-button{
+    	margin-top: 20px;
+    	width:170px;
+    	height:40px;
+    	board-radius : 0;
+    	background-color:black;
+    	color: white;
+    	border : none;
+    }
+    
+    

@@ -1,0 +1,95 @@
+@charset "UTF-8";
+
+table {
+	border: 0px;
+	width: 900px;
+}
+
+.title h3 {
+	font-size: 1.5em;
+}
+
+a {
+	display: inline-block;
+	color: black;
+	text-decoration: none;
+}
+
+.header_area a {
+	width: 100px;
+	padding: 10px;
+	text-align: center;
+}
+
+.header_area span {
+	font-weight: bold;
+}
+
+.btn_area a {
+	text-align: center;
+	padding: 10px;
+	width: 100px;
+}
+
+.board_area a {
+	background: transparent;
+	color: rgb(0, 200, 80);
+	margin-left: 20px;
+}
+
+.board_area input, .board_area textarea {
+	border: none;
+	outline: none;
+}
+
+tr.like a {
+	position: absolute;
+	left: 3px;
+	top: 3px;
+	background: transparent;
+	color: #f00;
+	background-image:
+		url(https://ca-fe.pstatic.net/web-pc/static/img/ico-post-like-f-53535.svg?a37a11006a542ce9949c0dd6779345b8=);
+	background-repeat: no-reapeat;
+	width: 17px;
+	height: 17px;
+}
+
+tr.like span {
+	margin-left: 18px;
+}
+
+.write_box {
+	padding-bottom: 40px;
+}
+
+
+.admin_cont{
+	width:1000px;
+	margin: 0 auto;
+	margin-top:50px;
+}
+
+.title_word{
+	 text-align:left;
+}
+
+.title h3 {
+    font-size: 2.5em;
+    color: rgb(0, 0, 0);
+}
+
+.contactForm{
+	background-color:white;
+}
+
+td{
+	text-align:left;
+}
+
+#list_btn {
+	font-size:15px;
+	margin-top:30px;
+	background-color: black;
+	color: white;
+}

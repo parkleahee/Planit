@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.planit.mapper.AdminMapper">
+	<select id="ContactCnt" resultType="_int">
+		select count(*) from t_contact
+	</select>
+	<!-- mybatis에서 ${키} 는 세팅을 할 때 양 옆에 ' 가 없이 세팅을 해준다. -->
+	<select id="getContactCntWithKey" resultType="_int"
+		parameterType="string">
+		select count(*) from t_contact where contacttitle like('%${keyword}%') or
+		contactcontents like ('%${keyword}%')
+	</select>
+	<select id="getContactList" resultType="com.planit.domain.ContactDTO">
+		select * from t_contact order by contactnum desc limit #{startRow},#{pageSize}
+	</select>
+	<select id="getContactListWithKey" parameterType="hashmap"
+		resultType="com.planit.domain.ContactDTO">
+		select * from t_contact where contacttitle like('%${keyword}%') or
+		contactcontents like ('%${keyword}%') order by contactnum desc limit
+		#{startRow},#{pageSize}
+	</select>
+	<select id="getDetail" parameterType="_int"
+		resultType="com.planit.domain.ContactDTO">
+		select * from t_contact where contactnum=#{contactnum}
+	</select>
+	<select id="getLastNum" parameterType="string" resultType="_int">
+		select max(contactnum) from t_contact where userid=#{userid}
+	</select>
+</mapper> 

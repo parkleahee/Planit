@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="com.planit.mapper.ChatMapper">
+     <select id="getLastChat"  resultType="_int">
+        select chatnum from t_chatcontent order by chatnum desc limit 1
+     </select>
+     <select id="getchatroomlastnum" resultType="_int">
+        select chatroomnum from t_chatroom order by chatroomnum desc limit 1 
+     </select>
+     <select id="getchatmembers" parameterType="_int" resultType="string">
+        select userid from t_chatmember where chatroomnum=#{chatroomnum}
+     </select>
+   <insert id="insertChat" parameterType="string">
+      insert into t_chatcontent(content) values (#{message})
+   </insert>
+   <insert id="sendChat" parameterType="com.planit.domain.ChatDTO">
+      insert into t_chatfromto(chatroomnum,chatnum,fromuser,touser) values(#{chatroomnum},#{chatnum},#{fromUser},#{toUser})
+   </insert>
+   <insert id="makeChatRoom" parameterType="string">
+      insert into t_chatroom(chatroomname) values (#{chatroomname})
+   </insert>
+   <insert id="insertChatMember">
+      insert into t_chatmember values (#{chatroomnum},#{userid})
+   </insert>
+   <select id="getChatroomList" parameterType="string" resultType="com.planit.domain.ChatDTO">
+      select t_chatmember.chatroomnum as chatroomnum, t_chatroom.chatroomname as chatname, t_chatmember.userid as chatfrom
+      from t_chatmember join t_chatroom on t_chatmember.chatroomnum = t_chatroom.chatroomnum 
+      where userid = #{userid};
+   </select>
+   <select id="getchatcont" parameterType="_int" resultType="com.planit.domain.ChatDTO">
+      select distinct t_chatcontent.chatnum as chatnum, t_chatcontent.content as contents, t_chatcontent.chatdate as chatdate, ch.chatroomnum as chatroomnum,
+      ch.chatnum as chatnum, ch.fromuser as fromUser, ch.touser as toUser
+      from t_chatcontent join(select * from t_chatfromto where chatroomnum=#{chatroomnum}) as ch
+      on ch.chatnum = t_chatcontent.chatnum order by ch.chatnum;
+   </select>
+   <select id="getchatname" parameterType="_int" resultType="string">
+         select chatroomname from t_chatroom where chatroomnum = #{chatroomnum}
+   </select>
+  </mapper>

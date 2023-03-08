@@ -1,0 +1,908 @@
+#main_nav {
+	width: 100%;
+	box-sizing: border-box;
+	float: left;
+	/*background: url(./왼쪽\ 메뉴바\ 배경.png);*/
+	/* border: 1px solid red; */
+	height: 100vh;
+	text-align: center;
+	align-items: center;
+	justify-content: center;
+	justify-items: center;
+}
+
+
+@font-face {
+    font-family: 'LineSeedKR-Th';
+    src: url('../fonts/LINESeedKR-Th.woff') format('woff');
+    font-weight: 100;
+    font-style: normal;
+}
+
+* {
+	font-family: 'LineSeedKR-Th';
+}
+
+header {
+	height: 100vh;
+	float: left;
+	width: 15%;
+}
+
+body {
+	/* font-family: SpoqaHanSans, Abel, Lato-Bold, Droid Sans, AppleSDGothicNeo,
+      "sans-serif"; */
+	font-weight: 300;
+	text-align: center;
+	color: #181818;
+	/* background-color: #FAEBD7; */
+	background-image: url(../images/main.png);
+	line-height: 1;
+	font-size: 14px;
+}
+
+a {
+	text-decoration: none;
+	color: black;
+}
+
+#my_myintro {
+	width: 90%;
+	height: 70px;
+	display: flex;
+	text-align: center;
+	justify-content: center;
+	align-items: center;
+	margin: 0 auto;
+	padding-top: 20px;
+	background-image: url(../images/logo.png);
+	background-size: 100% 100%;
+	background-image: url(../images/logo.png);
+}
+
+.m_detail {
+	width: 85%;
+	height: 50px;
+	font-size: 20px;
+	margin: 35px auto;
+	text-align: center;
+	line-height: 50px;
+	background-color: rgba(255, 255, 255, 0.5);
+	border-radius: 20px;
+}
+
+.m_userinfo {
+	width: 85%;
+	height: 150px;
+	font-size: 20px;
+	margin: 20px auto;
+	text-align: center;
+	color: aliceblue;
+}
+
+.userinfo_img {
+	width: 50%;
+}
+
+.m_goal {
+	height: 15%;
+	background-size: 100%;
+}
+
+.goaldetail {
+	width: 70%;
+	margin: 0 auto;
+	position: relative;
+	top: 20%;
+}
+
+.fc-view-harness {
+	background-color: white;
+}
+
+#show {
+	width: 150px;
+	height: 50px;
+	color: black;
+	background-color: #F5F5DC;
+	boarder-radius: 10px;
+	border: none;
+	font-weight: 300;
+}
+
+#goal_tb {
+	text-align: center;
+	margin: 0 auto;
+	margin-top: 10px;
+}
+
+#goal_tb>tr {
+	margin: 10px 0;
+}
+
+#add_goal {
+	width: 70px;
+	height: 30px;
+	margin-top: 10px;
+	margin-right: 5px;
+	color: white;
+	background-color: black;
+	boarder-radius: 0;
+	border: none;
+	font-weight: 300;
+}
+
+.submit_id {
+	width: 70px;
+	height: 30px;
+	margin-top: 10px;
+	margin-left: 5px;
+	color: white;
+	background-color: black;
+	boarder-radius: 0;
+	border: 1px solid black;
+	font-weight: 300;
+}
+
+.submit_id {
+	width: 70px;
+	height: 30px;
+	margin-top: 10px;
+	margin-left: 5px;
+	color: white;
+	background-color: black;
+	boarder-radius: 0;
+	border: 1px solid black;
+	font-weight: 300;
+}
+
+.submit_time {
+	width: 70px;
+	height: 30px;
+	margin-top: 10px;
+	margin-left: 5px;
+	color: white;
+	background-color: black;
+	boarder-radius: 0;
+	border: 1px solid black;
+	font-weight: 300;
+}
+
+#close {
+	width: 70px;
+	height: 30px;
+	margin-top: 10px;
+	margin-left: 5px;
+	color: black;
+	background-color: white;
+	boarder-radius: 0;
+	border: 1px solid black;
+	font-weight: 300;
+}
+
+#timeclose {
+	width: 70px;
+	height: 30px;
+	margin-top: 10px;
+	margin-left: 5px;
+	color: black;
+	background-color: white;
+	boarder-radius: 0;
+	border: 1px solid black;
+	font-weight: 300;
+}
+
+.popup {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	background-color: #ffffff;
+	box-shadow: 0 2px 7px rgba(0, 0, 0, 0.3);
+	width: 300px;
+	height: 200px;
+	transform: translate(-50%, -40%);
+}
+
+#getgoal_btn1 {
+	float: right;
+	width: 100px;
+	height: 30px;
+	margin-top: 15px;
+	margin-right: 15px;
+	color: black;
+	background-color: #F5F5DC;
+	boarder-radius: 0;
+	border: none;
+	font-weight: 300;
+}
+
+.goal_wrap{
+	margin:20px 0;
+	background-color:white;
+}
+#getgoal_btn2 {
+	float: right;
+	width: 100px;
+	height: 30px;
+	margin-top: 15px;
+	margin-right: 15px;
+	color: black;
+	background-color: #F5F5DC;
+	boarder-radius: 0;
+	border: none;
+	font-weight: 300;
+}
+
+#goal_tit1 {
+	padding: 10px 0;
+}
+
+#goal_tit2 {
+	padding: 10px 0;
+}
+
+.goalset1 {
+	width: 85%;
+	height: 130px;
+	background: #F5DEB3;
+	margin: 0 auto;
+	margin-top: 15px;
+	border-radius: 10px;
+}
+
+.goalset2 {
+	width: 85%;
+	height: 130px;
+	background: #F5DEB3;
+	margin: 0 auto;
+	margin-top: 15px;
+	border-radius: 10px;
+}
+
+#progress1 {
+	appearance: none;
+}
+
+#progress1::-webkit-progress-bar {
+	background: #f0f0f0;
+	height: 15px;
+	border-radius: 10px;
+}
+
+#progress1::-webkit-progress-value {
+	border-radius: 10px;
+	background: #FA8072;
+}
+
+#progress2 {
+	appearance: none;
+}
+
+#progress2::-webkit-progress-bar {
+	background: #f0f0f0;
+	border-radius: 10px;
+}
+
+#progress2::-webkit-progress-value {
+	border-radius: 10px;
+	background: #FA8072;
+}
+
+#sub {
+	width: 80%;
+	margin: 0 auto;
+	float: left;
+	margin-left: 10px;
+	margin-bottom: 50px;
+	height: 100vh;
+}
+
+#sub_menu {
+	margin: 20px 0;
+	width: 100%;
+	border: 1px solid black;
+	background-color: black;
+	text-align: center;
+	padding: 20px 0;
+}
+
+#sub_menu>a {
+	text-decoration: none;
+	color: white;
+}
+
+#mypage {
+	/* width: 20%;
+  float: left; */
+	width: 100%;
+	height: 60px;
+	display: flex;
+	justify-content: center;
+	width: 70%;
+	margin: 0 auto;
+	margin-top: 50px;
+	margin-bottom: 30px;
+}
+
+.mypage_menu {
+	width: 20%;
+	height: 35%;
+	font-size: 20px;
+	border-radius: 10px;
+	float: left;
+	margin: 0 25px;
+	background-color: #CCFF99;
+}
+
+@charset "UTF-8";
+
+#external-events {
+	float: left;
+	width: 150px;
+	padding: 0 10px;
+	text-align: left;
+}
+
+#external-events h4 {
+	font-size: 16px;
+	margin-top: 0;
+	padding-top: 1em;
+}
+
+.external-event { /* try to mimick the look of a real event */
+	margin: 10px 0;
+	padding: 2px 4px;
+	background: #3366CC;
+	color: #fff;
+	font-size: .85em;
+	cursor: pointer;
+}
+
+#external-events p {
+	margin: 1.5em 0;
+	font-size: 11px;
+	color: #666;
+}
+
+#external-events p input {
+	margin: 0;
+	vertical-align: middle;
+}
+
+#calendar {
+/* 	margin: 0 auto; */
+	width: 100%;
+	height: 800px;
+	/* background-color: #FFFFFF; */
+	border-radius: 6px;
+	/*box-shadow: 0 1px 2px #C3C3C3;*/
+}
+
+/* #container {
+	margin-bottom: 100px; 
+}
+ */
+ 
+#cal {
+	margin-top: 30px;
+	width: 60%;
+	height: 770px;
+	border: none;
+	float: left;
+	padding-left: 20px;
+}
+
+#main_info {
+	width: 100%;
+	height: 200px;
+	border: 1px solid black;
+	margin-bottom: 20px;
+}
+
+.main_menu {
+	margin: 10px 0;
+	border: 1px solid black;
+	height: 50px;
+}
+
+#main_goal {
+	border: 1px solid black;
+	margin-top: 20px;
+	height: 100px;
+}
+
+#todo {
+	width: 70%;
+	height: 30px;
+	font-size: 15px;
+	border: 0;
+	border-radius: 15px;
+	outline: none;
+	padding-left: 10px;
+	background-color: rgb(233, 233, 233);
+}
+
+#add-button {
+	border: none;
+	font-size: 25px;
+	background-color: rgba(0, 0, 0, 0);
+}
+
+#important_btn {
+	float: right;
+	border: none;
+	margin-right:10px;
+	font-size: 15px;
+	background-color: rgba(0, 0, 0, 0);
+}
+
+#delete_btn {
+	float: right;
+	border: none;
+	font-size: 15px;
+	background-color: rgba(0, 0, 0, 0);
+}
+
+#cal_todo {
+	width: 100%;
+	height: 100vh;
+	margin-top: 50px;
+}
+
+#todo-list>div {
+	width: 80%;
+	margin: 0 auto;
+	text-align: left;
+	padding: 10px 0;
+	border-bottom: 1px solid grey;
+}
+
+#todo-list>div>button {
+	width: 20px;
+	height: 20px;
+	margin-left: 10px;
+	border: 1px dotted gray;
+	background-color: rgba(0, 0, 0, 0);
+}
+
+#calendar {
+	float: left;
+}
+
+#to {
+	margin-left: 10px;
+	width: 23%;
+	height: 800px;
+	margin-bottom: 50px;
+	border-radius: 10px;
+	/* border: 1px solid black; */
+	background-color: #D3D3D3;
+	float: left;
+}
+
+#cal_menu_btn {
+	width: 75%;
+	float: left;
+}
+
+#cal_btn {
+	border-top-left-radius: 5px;
+	border-bottom-left-radius: 5px;
+	border-right: none;
+	width: 100px;
+	height: 40px;
+}
+
+#cal_menu button {
+	border: 1px solid #ff3b30;
+	background-color: rgba(0, 0, 0, 0);
+	color: #ff3b30;
+	padding: 5px;
+}
+
+#cal_menu button:hover {
+	color: white;
+	background-color: #ff3b30;
+}
+
+.clicked {
+	background-color:#FFFACD;
+}
+
+.none {
+	background-color: none;
+}
+
+#tt_btn {
+	border-top-right-radius: 5px;
+	border-bottom-right-radius: 5px;
+	margin-left: -5px;
+	width: 100px;
+	height: 40px;
+}
+
+#save-button {
+	margin-top: 20px;
+	width: 170px;
+	height: 40px;
+	board-radius: 0;
+	background-color: black;
+	color: white;
+	border: none;
+}
+
+.background {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100vh;
+	background-color: rgba(0, 0, 0, 0.3);
+	z-index: 1000;
+	/* 숨기기 */
+	z-index: -1;
+	opacity: 0;
+}
+
+.show {
+	opacity: 1;
+	z-index: 1000;
+	transition: all 0.5s;
+}
+
+.window {
+	position: relative;
+	width: 100%;
+	height: 100%;
+}
+
+.show .popup {
+	transform: translate(-50%, -50%);
+	transition: all 0.5s;
+}
+
+#withdraw_btn1 {
+	width: 130px;
+	height: 50px;
+	background-color: black;
+	color: white;
+	border: none;
+	font-weight: 100;
+}
+
+#withdraw_btn2 {
+	width: 130px;
+	height: 50px;
+	background-color: white;
+	color: black;
+	border: 1px solid black;
+	font-weight: 100;
+}
+
+.friend_sub {
+	color: white;
+}
+
+#goalzero_img {
+	width: 60%;
+	height: 60%;
+	margin: 0 auto;
+	background-image: url(../images/goal_img.jpeg);
+	background-size: 100% 100%;
+}
+
+#goalzero_txt {
+	margin-top: 20px;
+}
+
+#goalzero_txt1 {
+	font-size: 24px;
+}
+
+#background_img {
+	display: flex;
+	position: fixed;
+	width:40vh;
+	height:40vh;
+	right: .4rem;
+	bottom: .4rem;
+	background-image: url(../images/free_icon.png);
+	background-size: 100% 100%;
+}
+
+#withdraw_list{
+	width: 40%;
+	margin:0 auto;
+	background-color:white;
+	padding-top: 30px;
+	padding-bottom:30px;
+}
+
+.todoimg{
+	width:100%;
+	height:45%;
+	background-image: url(../images/todoimg.png);
+	background-size: 100% 100%;
+}
+
+
+.btn_sm{
+	border:1px solid black;
+}
+
+/* 문의게시판 */
+.tb_lst{
+	background-color: white;
+}
+
+#contact_info{
+	background-color:white;
+}
+
+
+/* timetable */
+
+.background_time {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100vh;
+	background-color: rgba(0, 0, 0, 0.3);
+	z-index: 1000;
+	/* 숨기기 */
+	z-index: -1;
+	opacity: 0;
+}
+
+.show_time {
+	opacity: 1;
+	z-index: 1000;
+	transition: all 0.5s;
+}
+
+.window_time {
+	position: relative;
+	width: 100%;
+	height: 100%;
+}
+
+.show_time .popup_time {
+	transform: translate(-50%, -50%);
+	transition: all 0.5s;
+}
+
+.popup_time {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	background-color: #ffffff;
+	box-shadow: 0 2px 7px rgb(0 0 0/ 30%);
+	width: 300px;
+	height: 200px;
+	transform: translate(-50%, -40%);
+}
+
+#time_tb {
+	text-align: center;
+	margin: 0 auto;
+	margin-top: 10px;
+}
+
+#todo-list>div {
+	width: 80%;
+	margin: 0 auto;
+	text-align: left;
+	padding: 10px 0;
+	border-bottom: 1px solid grey;
+}
+
+#todo-list>div>button {
+	width: 20px;
+	height: 20px;
+	margin-left: 10px;
+	border: 1px dotted gray;
+	background-color: rgba(0, 0, 0, 0);
+}
+
+.background {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100vh;
+	background-color: rgba(0, 0, 0, 0.3);
+	z-index: 1000;
+	/* 숨기기 */
+	z-index: -1;
+	opacity: 0;
+}
+
+.show {
+	opacity: 1;
+	z-index: 1000;
+	transition: all 0.5s;
+}
+
+.window {
+	position: relative;
+	width: 100%;
+	height: 100%;
+}
+
+
+.show .popup {
+	transform: translate(-50%, -50%);
+	transition: all 0.5s;
+}
+
+.goalset1 {
+	display: none;
+}
+
+.goalset2 {
+	display: none;
+}
+
+#cal_menu_btn {
+	float: left;
+}
+
+#cal_btn {
+	border-top-left-radius: 5px;
+	border-bottom-left-radius: 5px;
+	border-right: none;
+	width: 100px;
+	height: 40px;
+}
+
+#tt_btn {
+	border-top-right-radius: 5px;
+	border-bottom-right-radius: 5px;
+	margin-left: -5px;
+	width: 100px;
+	height: 40px;
+}
+
+#cal_menu button {
+	border: 1px solid #ff3b30;
+	background-color: rgba(0, 0, 0, 0);
+	color: #ff3b30;
+	padding: 5px;
+}
+
+#cal_menu button:hover {
+	color: white;
+	background-color: #ff3b30;
+}
+
+ /*goalview.css */
+ .goal_container {
+	/* width: 60%;
+	height: 1000px;
+	margin-left: 200px; */
+	width: 70%;
+	height: 90%;
+	margin: 0 auto;
+	/* opacity: 0.4; */
+}
+
+#sub {
+	width: 80%;
+	margin: 0 auto;
+}
+
+.bottom_line {
+	border-bottom: 5px solid black;
+	width: 68%;
+	margin: 0 auto;
+	margin-bottom: 5%;
+}
+
+/* #mypage_menu1{
+	margin-left: 120px;
+} */
+#goal_progress {
+	appearance: none;
+}
+
+#goal_progress::-webkit-progress-bar {
+	background: #f0f0f0;
+	border-radius: 10px;
+	height: 15px;
+}
+
+#goal_progress::-webkit-progress-value {
+	border-radius: 10px;
+	background: #FA8072;
+}
+
+#goal_wrap {
+	width: 70%;
+	height: 80%;
+	background-color: black;
+	/* opacity: 0.6; */
+}
+
+#goal_list {
+	margin: 0 auto;
+	margin-bottom: 50px;
+	width: 95%;
+	height: 150px;
+	font-size: 15px;
+	color: #000000;
+	border-radius: 10px;
+	background-color: #F5F5DC;
+}
+
+#goal_progress {
+	width: 85%;
+	padding: 10px 0;
+}
+
+#goal_tit {
+	margin-top: 10px;
+	margin-left: 50px;
+	padding: 10px 0;
+	float: left;
+}
+
+#goal_per {
+	clear: both;
+}
+
+#goal_pernum {
+	float: right;
+	padding: 3px 15px 0 0;
+}
+
+#goal_date {
+	margin-top: 30px;
+	margin-bottom: 30px;
+}
+
+#goal_delete {
+	float: right;
+	margin-right: 15px;
+}
+
+#deletegoal_btn {
+	margin-top: 20px;
+	width: 20px;
+	height: 20px;
+	background-color: black;
+	color: white;
+	border: none;
+	font-weight: 300;
+	letter-spacing: 10px;
+	text-align: center;
+}
+
+
+/*myinfoview.css  */
+
+#result {
+	color: white;
+	font-weight: bold;
+}
+
+#clone_proof {
+	position: absolute;
+	visibility: hidden;
+}
+
+#proofchecktr {
+	display: none;
+}
+
+#txt_box {
+	padding-top: 10px;
+	text-align: left;
+}
+
+#pwtxt {
+	/* font-size: 15px; */
+	text-align: left;
+}

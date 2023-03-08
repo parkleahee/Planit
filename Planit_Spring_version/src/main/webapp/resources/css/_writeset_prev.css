@@ -1,0 +1,196 @@
+@charset "UTF-8";
+
+          *{margin: 0; padding: 0; box-sizing: border-box;}
+        body{
+            font-size: 16px;
+            height: 1000px;
+            color: white;  
+            white-space: normal;
+            word-break: normal;
+            word-wrap: break-word;
+            line-height: 1;
+            background: url(./최종배경화면.png) no-repeat;
+            background-size: cover;
+
+        }
+        h1, h2, h3, h4, h5, h6{ font-weight: normal; font-size: inherit;}
+        ul, ol, li{ list-style:none; }
+        a{ text-decoration: none; }
+        a:link, a:visited, a:focus{ color:#444; }
+        img{ border:none; vertical-align: middle; }
+        #todo-list>div {
+            width: 80%;
+            margin: 0 auto;
+            text-align: left;
+            padding: 10px 0;
+            border-bottom: 1px solid grey;
+        }
+
+        #todo-list>div>button {
+            width: 20px;
+            height: 20px;
+            margin-left: 10px;
+            border: 1px dotted gray;
+            background-color: rgba(0, 0, 0, 0);
+        }
+
+        .background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background-color: rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+            /* 숨기기 */
+            z-index: -1;
+            opacity: 0;
+        }
+
+        .show {
+            opacity: 1;
+            z-index: 1000;
+            transition: all 0.5s;
+        }
+
+        .window {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        .popup {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #ffffff;
+            box-shadow: 0 2px 7px rgba(0, 0, 0, 0.3);
+            /* 임시 지정 */
+            width: 300px;
+            height: 400px;
+            /* 초기에 약간 아래에 배치 */
+            transform: translate(-50%, -40%);
+        }
+
+        .show .popup {
+            transform: translate(-50%, -50%);
+            transition: all 0.5s;
+        }
+
+        .goalset1{
+            display:none;
+        }
+
+        .goalset2{
+            display:none;
+        }
+        #center_content{
+            margin: 0 20%;
+            width: 80%;
+            height: 100%;
+            color: white;
+        }
+        #top_center_content{
+            width: 100%;
+            height: 167px;
+            margin: 0 auto;
+        }
+        #top_center_content > div{
+            display: inline-block;
+            width: 49%;
+            height: 200px;
+            font-size: 2.2rem;
+            line-height: 200px;
+            margin-bottom: 50px;
+        }
+        #menu2 > a{
+            color: white;
+        }
+        #bottom_center_content{
+            border: 1px solid white;
+            margin-top: 250px;
+            display: none;
+            width: 90%;
+            margin-left: 5%;
+        }
+        #bottom_title > div > div{
+            display: inline-block;
+            width: 33%;
+        }
+        #bottom_title > div{
+            height: 150px;
+            line-height: 150px;
+        }
+        #bottom_title{
+            border: 1px solid white;
+        }
+        #bottom_container{
+            margin: 0 auto;
+            width: 100%;
+            height: 300px;
+            border: 1px solid white;
+        }
+        #bottom_container > div {
+            width: 23%;
+            line-height: 50px;
+            margin-left: 50px;
+            margin-top: 30px;
+        }
+        #bottom_cont1 {
+            display: inline-block;
+            font-size: 30px;
+            float: left;
+        }
+        #bottom_cont2 {
+            display: inline-block;
+        }
+        #bottom_cont3 {
+            display: inline-block;
+            width: 100%;
+            height: 80%;
+            float: right;
+            overflow: auto;
+        }
+
+        @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+
+        .dropdown{
+            position : relative;
+            display : inline-block;
+        }
+
+        .dropdown-content{
+            display : none;
+            position : absolute;
+            z-index : 1; /*다른 요소들보다 앞에 배치*/
+            top: 50%;
+            left: 37%;
+            font-size: 1.5rem;
+            /* border: 1px solid white; */
+        }
+
+        .dropdown-content div{
+            height: 150px;
+            display : block;
+            color: white;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+        .hover{
+            cursor:pointer;
+        }
+        #dropdown-left{
+            position: absolute;
+            left: 26%;
+        }
+        #submit{
+            /* background-image: url(./작성하기버튼.png) no-repeat;
+            background-size: contain; */
+            font-size: 30px;
+            width: 150px;
+            height: 100%;
+            margin: 20px 0 20px 50%;
+        }

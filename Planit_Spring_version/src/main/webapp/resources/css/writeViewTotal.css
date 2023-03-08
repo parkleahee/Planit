@@ -1,0 +1,805 @@
+@charset "UTF-8";
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	font-size: 16px;
+	height: 100%;
+	color: rgb(255, 255, 255);
+	white-space: normal;
+	word-break: normal;
+	/* word-wrap: break-word; */
+	line-height: 1;
+	overflow-y: auto;
+	background: url(../images/main.png) repeat;
+	background-size: cover;
+	/* background-position: 100% 100%; */
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-weight: normal;
+	font-size: inherit;
+}
+
+ul, ol, li {
+	list-style: none;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:link, a:visited, a:focus {
+	color: #444;
+}
+
+img {
+	border: none;
+	vertical-align: middle;
+}
+
+@font-face {
+	font-family: 'KyoboHandwriting2021sjy';
+	src:
+		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2212@1.0/KyoboHandwriting2021sjy.woff2')
+		format('woff2');
+	font-weight: normal;
+	font-style: normal;
+}
+
+#container {
+	position: relative;
+}
+
+#container_cate {
+	position: absolute;
+	display: block;
+	width: 60%;
+	height: 100%;
+	right: 12%;
+	margin-top: 4%;
+}
+
+.m_detail {
+	cursor: pointer;
+}
+
+#side {
+	position: fixed;
+	width: 13%;
+	height: 700px;
+	left: 12%;
+}
+
+#cateside>input {
+	width: 75%;
+	height: 12%;
+}
+
+#group {
+	display: inline-block;
+	width: 100%;
+	height: 150px;
+	border: 1px solid black;
+	margin-bottom: 50px;
+}
+
+#group>div {
+	width: 22%;
+}
+
+#categories {
+	height: 100%;
+}
+
+#categories>li {
+	display: block;
+}
+
+#titleco {
+	/* padding: 20px 0; */
+	border-bottom: 1px solid black;
+}
+
+#title {
+	width: 60%;
+	height: 50px;
+	border: none;
+	border-bottom: 1px solid black;
+}
+
+#color_div {
+	float: right;
+	width: 30%;
+	height: 80px;
+	padding-top: 10px;
+}
+
+#container>#side>#mainside, #container>#side>#cateside {
+	border: 1px solid black;
+	background-color: black;
+	color: white;
+}
+
+#container>#side>#mainside {
+	width: 100%;
+	box-sizing: border-box;
+	margin-bottom: 10%;
+}
+
+#container>#side>#mainside span, #container>#side>#cateside span {
+	display: block;
+	margin: 0 auto;
+	margin-top: 1.5rem;
+	padding-bottom: 1.5rem;
+	font-size: 20px;
+	text-align: center;
+	border-bottom: 1px solid rgb(148, 147, 147);
+	width: 85%;
+	cursor: pointer;
+}
+
+#container>#side>#mainside span, #container>#side>#cateside span:last-child
+	{
+	border-bottom: none;
+}
+
+#group {
+	color: white;
+	border-radius: 40px;
+	background-color: #efcfcf;
+}
+
+#group>.group-title {
+	display: inline-block;
+	/* float: left; */
+	width: 30%;
+	height: 10%;
+	text-align: center;
+	font-size: 1.1em;
+	padding: 50px;
+	margin-left: 1%;
+}
+
+#group>.group-content {
+	display: inline-block;
+	width: 23%;
+	height: 10%;
+	text-align: center;
+	font-size: 1.1em;
+	margin-left: 1%;
+}
+
+.categorywrap_diary, .categorywrap_map {
+	font-family: 'KyoboHandwriting2021sjy';
+	display: block;
+	position: relative;
+	padding-top: 25px;
+	padding-bottom: 25px;
+	width: 100%;
+	height: 70%;
+	background-color: rgb(255, 205, 244);
+}
+
+.categorywrap_map {
+	background-color: aliceblue;
+}
+
+.inner {
+	background-color: white;
+	border-radius: 20px;
+	margin: 0 auto;
+	width: 90%;
+	height: 70%;
+	padding: 0.75rem 1rem;
+}
+
+#sidebar {
+	border: 1px solid black;
+	width: 150px;
+	height: 600px;
+}
+
+.head {
+	display: flex;
+	margin-top: 10px;
+	justify-content: space-between;
+}
+
+.diadate, .diaweather {
+	font-family: 'KyoboHandwriting2021sjy';
+	width: 235px;
+	height: 50px;
+	font-weight: 300;
+	font-size: 17px;
+}
+
+.diatitle {
+	font-family: 'KyoboHandwriting2021sjy';
+	width: 100%;
+	height: 50px;
+	font-weight: 300;
+	font-size: large;
+}
+
+.diaimg {
+	width: 100%;
+	/* height: 210px; */
+}
+
+.diacont {
+	font-family: 'KyoboHandwriting2021sjy';
+	width: 100%;
+	min-height: 310px;
+	font-weight: 300;
+	font-size: 16px;
+	line-height: 2.0em;
+	letter-spacing: 3px;
+	resize: none;
+}
+
+.cate_diary {
+	margin: 0 auto;
+	/* position: relative; */
+}
+
+.diaimg {
+	margin-top: 10px;
+	text-align: center;
+}
+
+.diaimg:focus {
+	border: 3px solid blue;
+}
+
+.head>input, #body>input {
+	/* outline: none; */
+	border: none;
+}
+
+textarea {
+	padding: 0.75rem 1rem;
+}
+/* .diacont:focus{
+outline:none;
+} */
+.btndiv {
+	position: absolute;
+	right: 0;
+	top: 0;
+	width: 30px;
+	height: 30px;
+}
+
+.btndiv:hover button {
+	display: block;
+}
+
+.btndiv>button {
+	display: none;
+	border: none;
+	position: absolute;
+	background-color: transparent;
+	width: 25px;
+	height: 25px;
+	background-image: url(../images/xBtn.png);
+	background-size: cover;
+}
+/* 가계부 */
+table {
+	border-collapse: separate;
+	border-spacing: 0;
+	width: 100%;
+	table-layout: fixed;
+}
+
+th, td {
+	padding: 6px 15px;
+	/* display: inline-block;
+width: 15%; */
+}
+
+td input, th input {
+	font-weight: 300;
+	font-size: 16px;
+	line-height: 2.0em;
+	letter-spacing: 3px;
+	text-align: center;
+	width: 100%;
+	font-family: 'KyoboHandwriting2021sjy';
+}
+
+td:nth-child(3)>input {
+	text-align: left;
+}
+
+th {
+	font-family: 'KyoboHandwriting2021sjy';
+	background: #008B8B;
+	color: #fff;
+}
+
+th:first-child {
+	width: fit-content;
+}
+
+td {
+	/* border-right: 1px solid #c6c9cc; */
+	border-bottom: 1px solid #c6c9cc;
+	font-family: 'KyoboHandwriting2021sjy';
+}
+
+tr:nth-child(even) td {
+	background: #eaeaed;
+}
+
+.cate_account {
+	padding-top: 25px;
+	padding-bottom: 25px;
+	height: 100%;
+	background-color: #B0E0E6;
+	background-repeat: no-repeat;
+	margin: 0 auto;
+	position: relative;
+	display: block;
+}
+
+.tablehead input, .body tr input {
+	border: none;
+}
+
+.tablehead input:focus {
+	outline: none;
+}
+
+.footer input {
+	border: none;
+	background-color: transparent;
+	font-weight: 300;
+	font-size: 16px;
+	line-height: 2.0em;
+	letter-spacing: 3px;
+}
+
+.footer input:focus {
+	outline: none;
+}
+
+.accinner {
+	border: none;
+	background-color: white;
+	border-radius: 20px;
+	margin: 0 auto;
+	width: 90%;
+	height: 70%;
+}
+
+.accterm {
+   letter-spacing:2px;
+   line-height:1.4em;
+   font-weight: 300;
+   font-size: 0.83em;
+}
+
+.accdate{
+   letter-spacing:2px;
+   line-height:1.4em;
+   font-weight: 300;
+   font-size: 0.83em;
+}
+
+.accmemo {
+	font-family: 'KyoboHandwriting2021sjy';
+	min-height: 200px;
+	padding: 0.75rem 1rem;
+	width: 100%;
+	font-weight: 300;
+	font-size: 16px;
+	line-height: 2.0em;
+	letter-spacing: 3px;
+}
+
+.diadate:focus, .diatitle:focus, .diatitle:focus, .diaweather:focus,
+	:focus, textarea, .body tr input:focus {
+	outline: none;
+}
+
+.plusbtndiv {
+	/* position: absolute; */
+	width: 25px;
+	height: 25px;
+	/* top:10.5rem;
+    left: 7.5vw; */
+}
+
+.minusbtndiv {
+	/* position: absolute; */
+	width: 25px;
+	height: 25px;
+	/* top:10.5rem;
+    right: 7.5vw; */
+}
+
+.plusbtndiv>button, .minusbtndiv>button {
+	display: none;
+	border: none;
+	/* position: absolute; */
+	background-color: transparent;
+	width: 25px;
+	height: 25px;
+	background-image: url(../images/plusBtn.png);
+	background-size: cover;
+}
+
+.minusbtndiv>button {
+	background-image: url(../images/minusBtn.png);
+}
+
+.plusbtndiv:hover button, .minusbtndiv:hover button {
+	display: block;
+}
+
+.btndiv {
+	position: absolute;
+	right: 0;
+	top: 0;
+	width: 25px;
+	height: 25px;
+}
+
+.btndiv:hover button {
+	display: block;
+}
+
+.body {
+	margin-top: 30px;
+}
+
+.body tr input {
+	background-color: transparent;
+}
+
+#cul_top {
+	margin-bottom: 20px;
+	text-align: left;
+}
+
+#cul_top>input {
+	font-size: 18px;
+	width: 18%;
+}
+
+#cultitle {
+	font-family: 'KyoboHandwriting2021sjy';
+}
+
+#cultype {
+	font-family: 'KyoboHandwriting2021sjy';
+}
+
+#culgenre {
+	font-family: 'KyoboHandwriting2021sjy';
+}
+
+.cate_cul {
+	position: relative;
+	background-color: violet;
+	padding: 25px 0;
+}
+
+#culture {
+	margin: 0 auto;
+	text-align: center;
+}
+
+#culcontents {
+   font-family: 'KyoboHandwriting2021sjy';
+   resize: none;
+   /* overflow: auto; */
+   min-height: 200px;
+   width: 100%;
+   font-size: 1.07em;
+    letter-spacing: 2px;
+    line-height: 1.4em;
+}
+
+.cate_memo {
+	position: relative;
+	background-color: palegreen;
+	padding: 25px 0;
+}
+
+#memo_contents {
+	margin: 20px auto;
+	text-align: center;
+}
+
+#memo_contents textarea {
+   font-family: 'KyoboHandwriting2021sjy';
+   resize: none;
+   overflow: auto;
+   min-height: 200px;
+   width: 100%;
+   font-size:1.07em;
+   letter-spacing:2px;
+   line-height:1.4em;
+}
+
+#term_cont {
+	margin: 20px auto;
+	width: 200px;
+}
+
+#date_cont {
+	margin: 20px auto;
+	width: 200px;
+}
+
+#date {
+	margin-left: 68%;
+}
+
+#authority_content {
+	margin: 20px auto;
+	width: 150px;
+}
+
+#friend_content {
+	margin: 20px auto;
+}
+
+#term_content1 {
+	width: 38%;
+}
+
+#term_content2 {
+	width: 38%;
+}
+
+#date_content1 {
+	width: 38%;
+}
+
+#date_content2 {
+	width: 38%;
+}
+
+#authority_content {
+	width: 100%;
+}
+
+#friend_content {
+	width: 75%;
+}
+
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+
+.dropdown {
+	position: relative;
+	display: inline-block;
+}
+
+.dropbtn_icon {
+	font-family: 'Material Icons';
+}
+
+.dropdown-content {
+	display: none;
+	position: absolute;
+	z-index: 5; /*다른 요소들보다 앞에 배치*/
+	font-weight: 400;
+	color: black;
+	background-color: #f9f9f9;
+	min-width: 100%;
+	top: 75%;
+}
+
+.dropdown-content span {
+	display: block;
+	text-decoration: none;
+	color: rgb(37, 37, 37);
+	font-size: 12px;
+	padding: 12px 20px;
+}
+
+.dropdown-content span:hover {
+	background-color: #ececec
+}
+
+.dropdown:hover .dropdown-content {
+	display: block;
+}
+
+.hidden {
+	display: none;
+	visibility: hidden;
+}
+
+#friend_detail {
+	position: relative;
+}
+
+#friend_addlist {
+	position: absolute;
+	top: 0%;
+	left: 100%;
+	display: block;
+	width: 200px;
+	height: 200px;
+	color: black;
+	background-color: white;
+	margin-right: 20px;
+	margin-bottom: 20px;
+	overflow: scroll;
+}
+/* food */
+.cate_food {
+	position: relative;
+	width: 100%;
+	height: auto;
+	display: block;
+	padding: 25px 0;
+	background-color: antiquewhite;
+}
+
+.fd_header {
+	width: 100%;
+	height: 50px;
+	margin-bottom: 10px;
+	display: inline-block;
+}
+
+.fd_header_lt {
+	width: 60%;
+	height: 100%;
+	float: left;
+}
+
+.fd_time {
+   font-family: 'KyoboHandwriting2021sjy';
+   width: 25%;
+   height: 100%;
+   float: left;
+   margin-right: 20px;
+   font-size: 1.07em;
+    letter-spacing: 2px;
+    line-height: 1.4em;
+}
+
+.fd_header_rt {
+	height: 100%;
+	/* display: inline-block; */
+}
+
+.fd_cont {
+	height: 200px;
+}
+
+.cate_food_img {
+	width: 30%;
+	height: 200px;
+	border-radius: 10px;
+	float: left;
+	margin-right: 30px;
+}
+
+img.thumbnail {
+	width: 100%;
+	height: 100%;
+	clear: both;
+	display: block;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: contain;
+}
+
+.fd_text {
+   font-family: 'KyoboHandwriting2021sjy';
+   width: 100%;
+   height: 100%;
+   /* float: right; */
+   resize: none;
+   /* overflow: auto; */
+   min-height: 190px;
+   font-size: 1.07em;
+    letter-spacing: 2px;
+    line-height: 1.4em;
+}
+
+.star {
+	position: relative;
+	font-size: 2rem;
+	font-family: 'KyoboHandwriting2021sjy';
+	font-size: 40px;
+	float: right;
+	color: black;
+}
+
+.star input {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	left: 0;
+	opacity: 0;
+	cursor: pointer;
+}
+
+.star span {
+	width: 0;
+	position: absolute;
+	left: 0;
+	color: red;
+	overflow: hidden;
+	pointer-events: none;
+}
+
+/* display none 하는 곳 */
+.cate_hidden {
+	display: none;
+}
+
+.Btns {
+	height: 50px;
+	text-align: center;
+}
+
+.Btns>input, .Btns>a>button {
+	width: 110px;
+	height: 55px;
+	margin: 5% 15%;
+}
+
+.getViewBtns>a>button {
+	width: 110px;
+	height: 55px;
+	margin: 5% 9%;
+}
+
+.w-btn:hover {
+	letter-spacing: 2px;
+	transform: scale(1.2);
+	cursor: pointer;
+}
+
+.w-btn:active {
+	transform: scale(1.5);
+}
+
+.w-btn {
+	position: relative;
+	border: none;
+	display: inline-block;
+	padding: 15px 30px;
+	border-radius: 15px;
+	font-family: "paybooc-Light", sans-serif;
+	box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+	text-decoration: none;
+	font-weight: 600;
+	font-size: 75%;
+	transition: 0.25s;
+}
+
+.w-btn-pink {
+	background-color: #f199bc;
+	color: white;
+}
+#main_navnav{
+	box-sizing: border-box;
+	float: left;
+	/*background: url(./왼쪽\ 메뉴바\ 배경.png);*/
+	/* border: 1px solid red; */
+	height: 100vh;
+	text-align: center;
+	align-items: center;
+	justify-content: center;
+	justify-items: center;
+	position: fixed;
+    top: 5%;
+    left: 0;
+    right: 0;
+    width: 250px;
+}

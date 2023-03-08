@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.planit.mapper.FriendMapper">
+   <insert id="add" parameterType="com.planit.domain.FriendDTO">
+      insert into t_friend (userid, friendid) values(#{userid}, #{friendid})
+   </insert>
+   
+   <select id="getConfirmCnt" resultType="_int">
+      select count(*) from t_friend where friendid = #{userid} and reqchk=0
+   </select>
+   
+   <select id="getConfirmCntWithKey" resultType="_int" parameterType="string">
+      select count(*) from t_friend where friendid = #{userid} and reqchk = 0
+   </select>
+   
+   <select id="getConfirmList" parameterType="hashmap" resultType="com.planit.domain.FriendDTO">
+      select * from t_friend where reqchk=0 and userid not in order by userid 
+      <!-- 친구신청을 할 시 userid -> friendid에게 신청하는 식으로 되니 자기 자신을 제외하기 위해서는 friendid에 userid에 loginuser, 즉 자신을 제외한 값을 찾게 만든다. -->
+   </select>
+   
+   <select id="getConfirmListWithKey" parameterType="hashmap" resultType="com.planit.domain.FriendDTO">
+      select * from t_friend where friendid = #{userid} and reqchk = 0 and blockchk=0 order by userid 
+   </select>
+   
+   <select id="getFriendlsCnt" parameterType="string" resultType="_int">
+      select count(*) from t_friend where (friendid=#{userid} or userid=#{userid}) and reqchk=1 and blockchk=0
+   </select>
+   
+   <select id="getFriendlsCntWithKey" resultType="_int" parameterType="string">
+      select count(*) from t_friend where (friendid=#{userid} or userid = #{userid}) and reqchk=1 and blockchk=0    
+      <!-- ('%${userid}%') -->
+   </select>
+   <select id="getFriendName" parameterType="_int" resultType="string">
+         select username from t_share as s join t_user as u on s.friends = u.userid where scnum=#{scnum}
+      </select>
+   <select id="getFriendlsList" parameterType="hashmap" resultType="com.planit.domain.FriendDTO">
+      select * from t_friend where reqchk=1 and blockchk=0 and order by friendid 
+   </select>
+   
+   <select id="getFriendList" parameterType="string" resultType="com.planit.domain.FriendDTO">
+       select brige.fuserid as userid, brige.fid as friendid, brige.uusername as username, lastu.username as friendname 
+      from (select f.userid as fuserid, f.friendid as fid, u.username as uusername 
+      from (select * from t_friend where (userid = #{userid} or friendid = #{friendid}) and reqchk = 1 and blockchk = 0) as f 
+      join t_user as u on f.userid = u.userid) as brige join t_user as lastu on brige.fid = lastu.userid;
+    </select>
+   
+   <select id="getFriendlsListWithKey" parameterType="hashmap" resultType="com.planit.domain.FriendDTO">
+      select brige.fuserid as userid, brige.fid as friendid, brige.uusername as username, lastu.username as friendname from (select f.userid as fuserid, f.friendid as fid, u.username as uusername from (select * from t_friend where (userid = #{userid} or friendid = #{userid}) and reqchk = 1 and blockchk = 0) as f join t_user as u on f.userid = u.userid) as brige join t_user as lastu on brige.fid = lastu.userid;
+   </select>
+   
+   <update id="friendOk" parameterType="string">
+      update t_friend set reqchk = "1" where userid = #{userid}
+   </update>
+   
+   <delete id="friendNo" parameterType="string">
+      delete from t_friend where userid=#{userid}
+   </delete>
+   
+   <update id="friendBlock" parameterType="hashmap">
+      update t_friend set blockchk = if(userid=#{userid},1,if(friendid=#{userid},2,0)) where (userid = #{friendid} and friendid =#{userid}) or (userid = #{userid} and friendid =#{friendid})
+      <!-- update t_friend set blockchk = if(userid=#{userid},1,if(friendid=#{userid},2,0)) where (userid = #{friendid} and friendid =#{userid}) or (userid = #{userid} and friendid =#{friendid}) -->
+      <!-- update t_friend set blockchk = 2 where (userid = #{userid} and friendid =#{friendid}) or (userid = #{friendid} and friendid =#{userid}) -->
+      <!-- update t_friend set blockchk = 2 where (userid = #{userid}) or (friendid =#{userid}) -->   
+   </update>
+   
+   <select id="getFriendBlockCnt" parameterType="string" resultType="_int">
+      <!-- select count(*) from t_friend where (friendid=#{userid} or userid=#{userid}) and reqchk=1 and (blockchk=1 or blockchk=2) -->
+      select count(*) from t_friend where reqchk=1 and (friendid=#{userid} and blockchk=2) or (userid=#{userid} and blockchk=1)   
+   </select>
+   
+   <select id="getFriendBlockCntWithKey" resultType="_int" parameterType="string">
+      <!-- select count(*) from t_friend where (friendid=#{userid} or userid = #{userid}) and reqchk=1 and (blockchk=1 or blockchk=2)  -->
+      select count(*) from t_friend where reqchk=1 and (friendid=#{userid} and blockchk=2) or (userid=#{userid} and blockchk=1)  
+   </select>      
+   
+   <select id="getFriendBlockList" parameterType="hashmap" resultType="com.planit.domain.FriendDTO">
+      <!-- select * from t_friend where (friendid=#{userid} or userid = #{userid}) reqchk=1 and (blockchk=1 or blockchk=2) and order by friendid desc limit #{startRow},#{pageSize}  -->
+      select * from t_friend where (userid=#{userid} and blockchk=1) or (friendid=#{userid} and blockchk=2) order by friendid 
+      <!-- desc limit #{startRow},#{pageSize} -->
+      <!-- select * from t_friend where userid =#{userid} and blockchk = 1  -->
+   </select>
+   
+   <select id="getFriendBlockListWithKey" parameterType="hashmap" resultType="com.planit.domain.FriendDTO">
+       select brige.fuserid as userid, brige.fid as friendid, brige.uusername as username, lastu.username as friendname from (select f.userid as fuserid, f.friendid as fid, u.username as uusername from 
+      (select * from t_friend where (userid=#{userid} and blockchk=1) or (friendid=#{userid} and blockchk=2)) as f join t_user as u on f.userid = u.userid) as brige join t_user as lastu on brige.fid = lastu.userid;
+      <!-- select * from t_friend where (userid=#{userid} and blockchk=1) or (friendid=#{userid} and blockchk=2) order by friendid -->
+   </select>
+   
+   <update id="friendBlockEnd" parameterType="string">
+      update t_friend set   blockchk = 0 where (userid = #{userid} or friendid = #{userid})
+   </update>
+   
+   <select id="getFrlsList" parameterType="hashmap" resultType="com.planit.domain.FriendDTO">
+      select * from t_friend where reqchk=1 and blockchk=0 and order by friendid 
+   </select>
+   
+   <select id="getFrlsListWithKey" parameterType="hashmap" resultType="com.planit.domain.FriendDTO">
+      select brige.fuserid as userid, brige.fid as friendid, brige.uusername as username, lastu.username as friendname from (select f.userid as fuserid, f.friendid as fid, u.username as uusername from (select * from t_friend where (userid = #{userid} or friendid = #{userid}) and reqchk = 1 and blockchk = 0) as f join t_user as u on f.userid = u.userid) as brige join t_user as lastu on brige.fid = lastu.userid;
+   </select>   
+   <select id="getFriendNAutho" parameterType="_int" resultType="com.planit.domain.GroupDTO" >
+      select authority, friends from t_share where scnum=#{scnum}
+   </select>
+</mapper>

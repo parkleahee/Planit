@@ -1,0 +1,36 @@
+@charset "UTF-8";
+
+	h3 {
+	font-weight: 400;
+	font-size: 28px;
+	line-height: 40px;
+	text-align: center;
+}
+
+p {
+	font-size: 18px;
+	line-height: 40px;
+	color: #303033;
+	text-align: center;
+}
+
+.input_box{
+    width:360px;
+    margin: 0 auto;
+    }
+    
+    #tit_pw {
+    	margin-top: 20px;
+    }
+   #wd_info{
+   text-align:left;
+   	width: 360px;
+    margin:0 auto;
+    padding:20px 0; 
+    
+   }
+   
+   #wd_info2{
+   	color:red;
+   }
+    

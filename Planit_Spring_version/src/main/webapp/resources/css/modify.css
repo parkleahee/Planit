@@ -1,0 +1,327 @@
+@charset "UTF-8";
+
+#contents{
+
+    min-width: 100px;
+    content: "";
+    display: block;
+    min-height: 800px;
+    position: relative;
+}
+body {
+    font-family: SpoqaHanSans,Abel,Lato-Bold,Droid Sans,AppleSDGothicNeo,"sans-serif";
+    font-weight: 300;
+    color: #181818;
+    background-color: #fff;
+    line-height: 1;
+    font-size: 14px;
+}
+
+div {
+    display: block;
+}
+/* a, abbr, acronym, address, applet, article, aside, audio, b, big, blockquote, body, button, canvas, caption, center, cite, code, dd, del, details, dfn, div, dl, dt, em, embed, fieldset, figcaption, figure, footer, form, h1, h2, h3, h4, h5, h6, header, hgroup, html, i, iframe, img, input, ins, kbd, label, legend, li, mark, menu, nav, object, ol, output, p, pre, q, ruby, s, samp, section, select, small, span, strike, strong, sub, summary, sup, table, tbody, td, textarea, tfoot, th, thead, time, tr, tt, u, ul, var, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-text-size-adjust: none;
+    -moz-text-size-adjust: none;
+    -ms-text-size-adjust: none;
+} */
+.container{
+    position: relative;
+    margin: 0 auto;
+    max-width: 1330px;
+    padding: 0 20px;
+}
+
+.sub_title{
+    border: 1px solid black;
+    text-transform: uppercase;
+    text-align: center;
+    width: 100%;
+    padding-top: 70px;
+}
+
+.sub_title > .tit{
+    font-size: 18px;
+    letter-spacing: 14px;
+    font-family: Lato-Bold;
+    color: #000;
+    text-indent: 14px;
+}
+
+.sub_title > .txt {
+    font-size: 15px;
+    color: #000;
+    font-weight: 500;
+    line-height: 28px;
+    margin: 10px 0 0;
+}
+
+.container::after{
+        content: "";
+        display: block;
+        clear: both;
+}
+
+.modify_info{
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+}
+
+.modify_wrap {
+    width: 360px;
+    margin: 0 auto;
+    background-color:white;
+}
+
+.modify_wrap > .form_wrap {
+    margin-top: 30px;
+}
+.form_wrap{
+	width:360px;
+}
+
+.input_box{
+    margin-bottom: 50px;
+    position: relative;
+}
+.modify_wrap > .input_box{
+    margin-bottom: 30px;
+}
+
+.modify_wrap > .input_box > .tit {
+    font-size: 12px;
+}
+
+.input_box > .tit {
+	text-align:left;
+    font-size: 20px;
+    color: #000;
+}
+
+.input_box > .input {
+    height: 46px;
+    width: 100%;
+    border-bottom: 1px solid #ddd;
+    margin-top: 13px;
+}
+
+input[type=date], input[type=email], input[type=number], input[type=password], input[type=tel], input[type=text] {
+    font-size: 18px;
+    color: #000;
+    height: 45px;
+    width: 100%;
+}
+
+	.input_css{
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+    font-weight: 300;
+    font-family: SpoqaHanSans;
+    color: #181818;
+    background: transparent;
+    border: 0;
+    border-radius: 0;
+    vertical-align: middle;
+    outline: none;
+  
+} 
+
+.modify_wrap > .input_box > .desc {
+    font-size: 14px;
+    color: red;
+    margin: 8px 0;
+}
+
+.modify_wrap > .input_box > .checked {
+    margin: 8px 0;
+    display: -moz-box;
+    display: flex;
+    -moz-box-pack: justify;
+    justify-content: space-between;
+}
+
+ul{
+    list-style: none;
+}
+
+.modify_wrap .input_box .checked li.off {
+    color: #bbb;
+    background: url(../images/ico_checked_off.png) no-repeat 0 0;
+    background-size: 16px 12px;
+}
+
+.modify_wrap > .input_box > .checked > li {
+    font-size: 14px;
+    font-weight: 500;
+    padding-left: 18px;
+}
+
+.modify_btns {
+    display: -moz-box;
+    display: flex;
+    -moz-box-pack: justify;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.modify_btns > input > .btn_sm {
+    height: 45px;
+}
+
+.modify_btns > input:first-child {
+    margin-left: 0;
+}
+
+
+.modify_btns > input {
+    height: 55px;
+    -moz-box-flex: 1;
+    flex: 1 1;
+    font-size: 14px;
+    margin-left: 10px;
+}
+
+.btn_bk, .btn_gr {
+    color: #fff;
+    display: block;
+}
+
+.btn_bk {
+    background: #000;
+    border: 1px solid #000;
+}
+
+.btn_sm {
+    height: 44px;
+    font-size: 13px;
+    width: 210px;
+    display: block;
+}
+
+.btn_bk, .btn_lg, .btn_sm, .btn_wh {
+    margin: 0 auto;
+    display: block;
+    text-align: center;
+    font-family: Abel,SpoqaHanSans;
+}
+
+
+/* button,textarea {
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+    font-weight: 300;
+    font-family: SpoqaHanSans;
+    color: #181818;
+    background: transparent;
+    border: 0;
+    border-radius: 0;
+    vertical-align: middle;
+    outline: none;
+} */
+
+li {
+    display: list-item;
+    text-align: -webkit-match-parent;
+}
+
+
+.modify_wrap .input_box .checked {
+    margin: 8px 0;
+    display: -moz-box;
+    display: flex;
+    -moz-box-pack: justify;
+    justify-content: space-between;
+}
+
+.modify_wrap .input_box .checked li {
+    font-size: 14px;
+    font-weight: 500;
+    padding-left: 18px;
+}
+
+/* dl, li, menu, ol, ul {
+    list-style: none;
+} */
+
+.bottom{
+    margin-bottom: 150px;
+}
+
+.modify_wrap .input_box .desc {
+    font-size: 14px;
+    color: red;
+    margin: 8px 0;
+}
+
+.modify_wrap .input_box .checked li.on {
+    color: #546de5;
+    background: url(../images/ico_checked_on.png) no-repeat 0 0;
+    background-size: 16px 12px;
+}
+
+.modify_wrap .etc .find {
+    float: left;
+}
+
+.modify_wrap .etc a {
+    display: inline-block;
+    font-size: 14px;
+    color: #727272;
+}
+
+a{
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    outline: none;
+}
+
+.modify_wrap input.btn-sign-in {
+    background: #fff;
+    line-height: 45px;
+    width: 100%;
+    text-align: center;
+    border: 1px solid #4d4d4d;
+    color: #000;
+    font-size: 14px;
+    margin-top: 10px;
+}
+
+.find{
+    margin-top: 20px;
+}
+.container > .main{
+    height: 500px;
+    background-color: lightgoldenrodyellow;
+}
+
+.container >.main > p {
+    padding-left: 30px;
+    padding-top: 30px;
+    font-size: 70px;
+    letter-spacing: 10px;
+}
+
+.container > .main > p+p {
+    position: relative;
+    padding-top: 300px;
+    padding-right: 50px;
+    font-size: 30px;
+    text-align: right;
+}
+
+header > div >a {
+    float: right;
+    margin-top: 40px;
+    margin-left: 30px;
+    margin-right: 20px;
+}

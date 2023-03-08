@@ -1,0 +1,316 @@
+@charset "UTF-8";
+
+                 @font-face {
+            font-family: 'NanumSquareNeo-Variable';
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.0/NanumSquareNeo-Variable.woff2') format('woff2');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+
+        *{margin: 0; padding: 0; box-sizing: border-box;}
+        body{
+            font-size: 16px;
+            height: 800px;
+            color: black;  
+            white-space: normal;
+            word-break: normal;
+            word-wrap: break-word;
+            line-height: 1;
+         
+
+        }
+        h1, h2, h3, h4, h5, h6{ font-weight: normal; font-size: inherit;}
+        ul, ol, li{ list-style:none; }
+        a{ text-decoration: none; }
+        a:link, a:visited, a:focus{ color:#444; }
+        img{ border:none; vertical-align: middle; }
+        #todo-list>div {
+            width: 80%;
+            margin: 0 auto;
+            text-align: left;
+            padding: 10px 0;
+            border-bottom: 1px solid grey;
+        }
+
+        #todo-list>div>button {
+            width: 20px;
+            height: 20px;
+            margin-left: 10px;
+            border: 1px dotted gray;
+            background-color: rgba(0, 0, 0, 0);
+        }
+
+        .background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background-color: rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+            /* 숨기기 */
+            z-index: -1;
+            opacity: 0;
+        }
+
+        .show {
+            opacity: 1;
+            z-index: 1000;
+            transition: all 0.5s;
+        }
+
+        .window {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        .popup {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #ffffff;
+            box-shadow: 0 2px 7px rgba(0, 0, 0, 0.3);
+            /* 임시 지정 */
+            width: 300px;
+            height: 400px;
+            /* 초기에 약간 아래에 배치 */
+            transform: translate(-50%, -40%);
+        }
+
+        .show .popup {
+            transform: translate(-50%, -50%);
+            transition: all 0.5s;
+        }
+
+        .goalset1{
+            display:none;
+        }
+
+        .goalset2{
+            display:none;
+        }
+        #container{
+            height: 100%;
+        }
+        #center_content{
+            font-family: 'NanumSquareNeo-Variable';
+            margin: 0 20%;
+            width: 80%;
+            height: 100%;
+            color: black;
+        }
+        #top_center_content{
+            width: 100%;
+            height: 167px;
+            margin: 0 auto;
+        }
+        #top_center_content > div{
+            display: inline-block;
+            width: 49%;
+            height: 200px;
+            font-size: 2.2rem;
+            line-height: 200px;
+            margin-bottom: 50px;
+        }
+        #menu2 > a{
+            color: black;
+        }
+        #bottom_center_content{
+            margin-top: 11%;
+            display: none;
+            width: 90%;
+            margin-left: 5%;
+        }
+        #bottom_title > div > div{
+            display: inline-block;
+            font-size: 30px;
+            width: 33%;
+        }
+        #bottom_title > div{
+            height: 100px;
+            line-height: 100px;
+        }
+        #bottom_title{
+           background-color: white;
+            border-bottom: 1px solid black;
+            border-top: 1px solid black;
+        }
+        #bottom_container{
+            margin: 0 auto;
+            width: 100%;
+            height: 300px;
+            border-top: 1px solid black;
+            background-color: rgb(255,255,255,0.8);
+        }
+        #bottom_container > div {
+            width: 33%;
+            height: 100%;
+        }
+        #bottom_cont1 {
+            display: inline-block;
+            font-size: 20px;
+            float: left;
+            position: relative;
+            margin-top: 35px;
+            width: 40%;
+        }
+        #cont2_date1{
+            color: black;
+            font-size: 20px;
+        }
+        #cont2_date2{
+            color: black;
+            margin-top: 10%;
+            font-size: 20px;
+        }
+        #bottom_cont2 {
+            display: inline-block;
+            font-size: 20px;
+        }
+        #bottom_cont2 > input {
+            margin: 40px 0;      
+        }
+        #bottom_cont3 {
+            display: inline-block;
+            font-size: 20px;
+            width: 100%;
+            height: 80%;
+            float: right;
+            overflow: auto;
+        }
+        #friendList > label, #friendList > input{
+            margin: 35px 0 0 0;
+        }
+
+        @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+
+        .dropdown{
+            position : relative;
+            display : inline-block;
+        }
+
+        .dropdown-content{
+            display : none;
+            position : absolute;
+            z-index : 1; /*다른 요소들보다 앞에 배치*/
+            top: 60%;
+            left: 41%;
+            font-size: 1.5rem;
+            line-height: 100px;
+        }
+      .dropbtn{
+         background-color: rgb(179,255,255);
+      }
+        .dropdown-content div{
+            height: 50px;
+            display : block;
+            color: black;
+            line-height: 50px;
+            margin-top: 5%;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+        .hover{
+            cursor:pointer;
+        }
+        .hover > span{
+         background-color: rgb(179,236,255);        
+        }
+        /* #dropdown-left{
+            left: 28%;
+        } */
+        #submit{
+            font-size: 100%;
+            width: 150px;
+            height: 50px;
+            margin-top: 2%;
+            margin-left: 49%;
+            display: none;
+            color : white;
+        }
+        input[type="text"] {
+        box-sizing: border-box;
+        width: 80%;
+        height: calc(3em + 2px);
+        margin: 0 0 1em;
+        padding: 1em;
+        border: 1px solid #ccc;
+        border-radius: 1.5em;
+        background: #fff;
+        resize: none;
+        outline: none;
+        }
+        input[type="text"][required]:focus {
+        border-color: #00bafa;
+        }
+        input[type="text"][required]:focus + label[placeholder]:before {
+        color: #00bafa;
+        }
+        input[type="text"][required]:focus + label[placeholder]:before,
+        input[type="text"][required]:valid + label[placeholder]:before {
+        transition-duration: 0.2s;
+        transform: translate(0, -1.5em) scale(0.9, 0.9);
+        }
+        input[type="text"][required] + label[placeholder] {
+        display: block;
+        pointer-events: none;
+        line-height: 1.25em;
+        margin-top: calc(-3em - 2px);
+        }
+        input[type="text"][required] + label[placeholder]:before {
+        content: attr(placeholder);
+        display: inline-block;
+        margin: 0 calc(1em + 2px);
+        padding: 0 2px;
+        color: #898989;
+        white-space: nowrap;
+        background-image: linear-gradient(to bottom, #fff, #fff);
+        background-size: 100% 5px;
+        background-repeat: no-repeat;
+        background-position: center;
+        }
+        body {
+        align-items: center;
+        justify-content: center;
+    }
+        .w-btn:hover {
+    letter-spacing: 2px;
+    transform: scale(1.2);
+    cursor: pointer;
+    }
+    .w-btn:active {
+    transform: scale(1.5);
+    }
+    .w-btn {
+    position: relative;
+    border: none;
+    display: inline-block;
+    padding: 15px 30px;
+    border-radius: 15px;
+    font-family: "paybooc-Light", sans-serif;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.25s;
+    }
+    .w-btn-pink {
+        background-color: #f199bc;
+        color: #d4dfe6;
+    }
+    
+    #scheYes {
+	   text-align: left;
+	   margin-left: -33%;
+	   background-color: white;
+   }
+	#scheNope{
+       left: 30%;
+       text-align: left;
+   }
+
+    
